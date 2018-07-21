@@ -1,0 +1,19 @@
+extends ./layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/admin/sellings.css')
+
+block content
+	p Sellings
+	div.fields
+		div.size
+			p Size
+		div.qty
+			p Quantity
+	div.sellings
+		each selling in sellings
+			div.singleSelling
+				a.image(href= '/admin/products/' + selling['unique'])
+					img(src= selling['image'])
+				p= selling['size']
+				p= selling['qty']

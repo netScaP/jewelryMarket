@@ -1,0 +1,27 @@
+extends ./layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/admin/products.css')
+
+block content
+	div
+		p products
+		div.products
+			a(href="/admin/addProduct").addProduct Добавить новый товар
+			each product in products
+				div.singleProduct
+					a.left(href= '/admin/products/' + product.unique)
+							img(src= product.imagePath[0])
+					div.right
+						p.type= product.type
+						if product.addInfo
+							p.new= product.addInfo
+						p.name= product.title
+						p.price= '$' + product.price
+					if !product.confirmed
+						form(action= "/admin/confirmproduct/" + product.unique)
+							button(type="submit") Подтвердить Товар
+					else
+						form(action= "/admin/rejectproduct/" + product.unique)
+							button(type="submit") Убрать подтверждение товара
+block scripts

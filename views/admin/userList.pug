@@ -1,0 +1,16 @@
+extends ./layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/admin/userList.css')
+
+block content
+	p Users
+	div.users
+		div(v-for="user in users").singleUser
+			div.usermail {{ user.email }}
+			div.userType {{ user.usertype }}
+			div.userPhone {{ user.phone }}
+			button(v-if="user.confirmed", @click="rejectUser(user._id); user.confirmed = !user.confirmed").isConfirm Пользователь Подтвержден
+			button(v-else, @click="confirmUser(user._id); user.confirmed = !user.confirmed") Подтвердить пользователя
+block scripts
+	script(src="../javascripts/userlist.js")

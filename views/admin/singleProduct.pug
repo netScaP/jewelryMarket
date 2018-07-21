@@ -1,0 +1,59 @@
+extends ./layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/admin/singleProduct.css')
+
+block content
+	a(href='/admin/products') Back
+	div.message
+		p(ref="success").success Updated
+		div.errorMsg
+			if hasErrors
+				each e in messages
+					p.error= messages
+	form(method="POST", @submit="submit")
+		div.singleProduct
+			div.left
+				div.mainImage
+					img(:src="product.imagePath[0]", alt="Empty")
+				div.thumbnails
+					img(v-for="image in product.imagePath", :src="image", alt="")
+				input(v-for="image in product.imagePath", type="url", :value="image", ref="imagePath", placeholder="Ссылка на изображение").imagePath
+				div.imagePathAdd(@click='addElement("imagePath")') +
+			div.right
+				div.prodDesc
+					input(type="text", :value="product.title", ref="title", placeholder="Название товара").title
+					input(type="text", :value="product.type", ref="type", placeholder="Тип товара").type
+					div.priceDiv
+						input(type="number", :value="product.price", ref="price", placeholder="Цена").price
+						span $
+					div.size
+						span Size(s): 
+						input(v-for="oneSize in product.size", type="text", :value="oneSize", class="sizeArr", ref="size")
+						div.sizeArrAdd(@click='addElement("size")') +
+					div.selectQuantity
+						p New Quantity:
+						input(type="number", :value="product.quantity", ref="quantity")
+					div.description
+						input(type="text", :value="product.description", ref="description", placeholder="Описание товара")
+		div.partDesc
+			p Product Specifications:
+			div.specific
+				div.onePart(v-for="(val, index) in product.partDesc", ref="onePart")
+					div.ind
+						input(type="text", :value="index", ref="partDescName", placeholder="Тип")
+					div.value
+						input(type="text", :value="val", ref="partDescValue", placeholder="Кольцо")
+				div.onePartAdd(@click='addElement("onePart")') +
+		span Sale: 
+		input(type="number", :value="product.sale", ref="sale", placeholder="Скидка")
+		br
+		span AddInfo: 
+		input(v-if="product.addInfo", type="text", :value="product.addInfo", ref="addInfo", placeholder="Дополнительная информация")
+		input(v-else, type="text", placeholder="Дополнительная информация", ref="addInfo")
+		br
+		input(type="hidden", :value="product.unique", ref="unique")
+		br
+		button(type="submit", @click="submitClick()") UPDATE Product
+block scripts
+	script(src="../../javascripts/admin.js")

@@ -1,0 +1,417 @@
+@import '_fonts.sass'
+$pad: 15%
+$colBorder: #e7e7e7
+$colFont: #8e8e8e
+body
+	margin: 0px
+	padding: 0px
+	overflow-x: hidden
+.layout-header
+	font-family: 'Droid Serif'
+	width: 100%
+	height: auto
+	padding-bottom: 30px
+	border: 0.5px solid $colBorder
+	.black-menu
+		padding: 0px $pad
+		width: auto
+		display: flex
+		justify-content: space-between
+		background-color: black
+		color: white
+		min-height: 50px
+		.dropMenu
+			margin-left: -5%
+			z-index: 1000
+			align-self: center
+			.mobMenu
+				position: fixed
+				display: inline-block
+				left: 0
+				margin-top: 20px
+				.likeUl
+					display: inline-flex
+					flex-direction: column
+					a
+						height: 100%
+						color: black
+						text-decoration: none
+						border-right: 2px solid transparent
+						border-bottom: 1px solid $colBorder
+						transition: all 0.2s linear
+						background-color: white
+						padding: 5px 10px
+						&:hover
+							border-right: 2px solid black
+			.forImg
+				cursor: pointer
+				width: 10px
+				height: 10px
+		.left-side, .right-side
+			display: flex
+			align-items: center
+			ul
+				display: flex
+				margin: 0px
+				li
+					display: inline-flex
+					padding: 5px
+					align-items: center
+					img
+						margin-right: 5px
+						width: 15px
+						height: 15px
+					a
+						text-decoration: none
+						color: white
+	.menu
+		font-family: 'Droid Serif'
+		display: flex
+		justify-content: flex-end
+		ul
+			padding: 0px $pad
+			width: auto
+			display: flex
+			li
+				display: inline-block
+				padding: 5px
+				a
+					text-decoration: none
+					color: white
+			li:nth-child(2)
+				border-right: 1px solid black
+				border-left: 1px solid black
+	.logo
+		padding: 0px $pad
+		width: auto
+		text-align: center
+		.main
+			margin: 0px
+			font-family: 'RaconteurNF'
+			font-size: 60px
+		.product
+			font-size: 20px
+			font-family: 'Droid Serif'
+			color: #bcbcbc
+			margin: -15px 0px 0px 10px
+			letter-spacing: 14px
+			text-transform: uppercase
+	& > nav
+		text-transform: uppercase
+		border-top: 1px solid $colBorder
+		border-bottom: 1px solid $colBorder
+		margin: 40px $pad 0px $pad
+		width: auto
+		display: flex
+		justify-content: space-between
+		font-family: 'Droid Serif'
+		ul
+			margin: 0px
+			padding: 0px
+			display: flex
+			min-height: 70px
+			li
+				display: inline-flex
+				height: 100%
+				transition: all 0.3s linear
+				border-bottom: 1px solid rgba(231, 231, 231, .0)
+				a
+					height: 100%
+					text-decoration: none
+					color: black
+					display: inline-flex
+					align-items: center
+					border-width: 70px
+					span
+						border-right: 1px solid $colBorder
+						padding: 0px 20px
+						border-left: 1px solid $colBorder
+				&:hover
+					border-bottom: 5px solid black
+		.search
+			margin-right: 15px
+			transition: all 0.3s linear
+			display: flex
+			align-items: center
+			.searchImg
+				background-image: url('../images/search.png')
+				background-repeat: no-repeat
+				background-size: contain
+				background-position: center
+				width: 20px
+				height: 100%
+				border-bottom: 2px solid rgba(0, 0, 0, 0)
+				transition: all 0.3s linear
+				&:hover
+					border-bottom: 2px solid $colFont
+.block-content
+	margin-top: 40px
+	width: auto
+	background-image: url('../images/uzor.png')
+	padding: 0px $pad
+	min-height: 500px
+	padding-top: 30px
+	margin-top: 0px
+	.main
+		background-color: white
+		padding: 30px 50px
+		box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.12);
+		.main-block
+			display: flex
+			justify-content: space-between
+			width: 100%
+	.whereForm
+		margin-top: 50px
+		display: flex
+		font-family: 'Droid Serif'
+		height: 140px
+		width: 100%
+		.leftSide
+			width: 50%
+			height: 100%
+			background-color: #f8f8f8
+			display: flex
+			flex-direction: column
+			justify-content: center
+			p
+				font-size: 24px
+				text-transform: uppercase
+				margin-bottom: 0px
+				margin-left: 2%
+			form
+				display: flex
+				flex-wrap: wrap
+				margin-top: 20px
+				margin-left: 2%
+				input
+					width: 80%
+					border: 1px solid $colBorder
+					font-style: italic
+					padding: 10px 20px
+				.arrowToRight
+					height: 40px
+					width: 50px
+					background-color: black
+					display: flex
+					justify-content: center
+					align-items: center
+					border: 0px
+					cursor: pointer
+					img
+						width: 20px
+						height: 10px
+		.centerSide
+			height: 0px
+			width: 0px
+			border-bottom: 140px solid black 
+			border-left: 140px solid #f8f8f8
+		.rightSide
+			width: 50%
+			height: 100%
+			background-color: black
+			color: white 
+			font-family: 'Droid Serif'
+			img
+				float: left
+				display: block
+				width: 25px
+				height: 25px
+				border-radius: 100%
+				border: 4px solid #393939
+				padding: 10px
+				margin-top: 20px
+				margin-right: 10px
+			.haveA
+				font-size: 24px
+				margin-bottom: 1px
+			.ifHaveQues
+				font-size: 14px
+				color: rgb(172, 172, 172)
+				span
+					color: white
+footer
+	background-color: black
+	color: white
+	padding: 0px $pad 0px $pad
+	font-family: 'Droid Serif'
+	color: $colFont
+	.features
+		padding: 30px 15px 40px 15px
+		margin-bottom: 50px
+		width: auto
+		background-color: white
+		display: flex
+		justify-content: space-around
+		img
+			transform: scale(0.9)
+			opacity: 0.2
+			transition: all 0.3s linear
+			&:hover
+				opacity: 1
+				transform: scale(0.8)
+	.content-footer
+		display: flex
+		justify-content: center
+		width: 70%
+		padding-left: 15%
+		padding-right: 15%
+		flex-wrap: wrap
+		border-bottom: 1px solid #232222
+		padding-bottom: 70px
+		.part
+			margin-right: 80px
+			.whereul
+				.main-text
+					color: white
+					text-transform: uppercase
+				ul
+					list-style-type: none
+					padding: 0px
+					li
+						display: flex
+						align-items: center
+						cursor: pointer
+						transition: all 0.3s linear
+						margin-bottom: 10px
+						&:hover
+							color: white
+							&:before
+								background-color: white
+						&:before
+							content: ''
+							display: block
+							float: left
+							width: 3px
+							height: 3px
+							background-color: $colFont
+							border-radius: 100%
+							margin-right: 5px
+		.icons
+			.whereul
+				.icon
+					overflow: hidden
+					float: left
+					margin: auto 5px
+					background-color: white
+					width: 50px
+					height: 50px
+					display: flex
+					justify-content: center
+					align-items: center
+					cursor: pointer
+					transition: all 0.3s linear
+					&:nth-child(2)
+						img
+							padding-top: 60%
+					&:hover
+						background-color: black
+						img
+							filter: invert(100%)
+	.copyright
+		display: flex
+		justify-content: space-between
+		padding-bottom: 40px
+		padding-top: 25px
+		.right
+			display: flex
+			flex-direction: row
+			.logo
+				margin: auto 5px
+.slide-enter-active,
+.slide-leave-active
+	transition: all .3s cubic-bezier(.65, .05, .36, 1)
+.slide-enter,
+.slide-leave-to
+	transform: translateX(-100%)
+@media (max-width: 1700px)
+	.block-content
+		.whereForm
+			.leftSide
+				form
+					input
+						width: 50%
+@media (max-width: 1300px)
+	$pad: 5%
+	.layout-header
+		.black-menu
+			padding: 0px $pad
+		.menu
+			ul
+				padding: 0px $pad
+		.logo
+			padding: 0px $pad
+		& > nav
+			margin: 40px $pad 0px $pad
+	.block-content
+		padding: 30px $pad 0px $pad
+		.whereForm
+			padding: 30px 0px
+			.leftSide
+				form
+					margin-top: 10px
+	footer
+		padding: 0px $pad 0px $pad
+@media (max-width: 1030px)
+	.block-content
+		.whereForm
+			.leftSide
+				p
+					font-size: 16px
+			.rightSide
+				.haveA
+					font-size: 16px
+	footer
+		.features
+			padding: 0px 15px 10px 15px;
+			img
+				height: 40px
+				width: 30px
+				&:hover
+					transform: scale(0.8)
+@media (max-width: 850px)
+	.whereForm
+		.leftSide
+			width: 100% !important
+			align-items: center
+			form
+				input
+					width: auto !important
+		.centerSide, .rightSide
+			width: 0px
+			display: none
+	.black-menu
+		font-size: 13px
+		ul
+			padding-left: 0px
+	.menu
+		font-size: 13px
+	.layout-header
+		& > nav
+			font-size: 13px
+		ul
+			li
+				a
+					span
+						padding: 0px 10px !important
+	footer
+		.content-footer
+			width: 90%
+			padding-left: 5%
+			padding-right: 5%
+			.part
+				margin-right: 10px
+@media (max-width: 640px)
+	.layout-header
+		& > nav
+			font-size: 10px
+	.black-menu
+		font-size: 10px
+	.menu
+		flex-wrap: wrap
+		& > *
+			width: 100% !important
+			margin: 5px 0px
+			justify-content: center
+		.toRight
+			.show
+				justify-content: center

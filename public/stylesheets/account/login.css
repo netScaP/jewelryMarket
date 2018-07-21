@@ -1,0 +1,137 @@
+@font-face {
+  font-family: 'RaconteurNF';
+  src: url("./fonts/raconteur-nf/RaconteurNF.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Droid Serif';
+  src: url("./fonts/droid-serif/DroidSerif.ttf") format("truetype"); }
+
+.become {
+  font-family: 'Droid Serif';
+  display: flex; }
+  .become .left {
+    display: flex;
+    flex-direction: column;
+    width: 70%; }
+    .become .left .email, .become .left .password, .become .left button {
+      display: flex;
+      height: 40px;
+      align-items: center;
+      margin-bottom: 15px; }
+      .become .left .email label, .become .left .password label, .become .left button label {
+        width: 15%; }
+      .become .left .email input, .become .left .password input, .become .left button input {
+        border: 1px solid #e7e7e7;
+        height: 85%;
+        width: 80% !important;
+        color: #8e8e8e;
+        padding-left: 10px;
+        width: auto; }
+      .become .left .email:last-child, .become .left .password:last-child, .become .left button:last-child {
+        align-self: flex-start; }
+    .become .left p:first-child {
+      font-size: 24px;
+      border-bottom: 1px solid #e7e7e7;
+      padding-bottom: 15px; }
+      .become .left p:first-child span {
+        color: #8e8e8e;
+        margin-left: 10px; }
+    .become .left .remember {
+      display: flex;
+      justify-content: space-between;
+      padding-right: 4%;
+      margin: 10px 0px 20px 0px; }
+      .become .left .remember > div {
+        display: flex;
+        flex-direction: row;
+        width: auto; }
+      .become .left .remember .left {
+        color: #8e8e8e; }
+      .become .left .remember .right a {
+        color: black;
+        padding: 0px; }
+      .become .left .remember .right span {
+        color: #8e8e8e;
+        padding: 0px;
+        margin: 0px 10px; }
+    .become .left .easy {
+      font-weight: bold; }
+    .become .left button {
+      margin-left: 15%;
+      margin-top: 10px;
+      background-color: black;
+      color: white;
+      border: 0px;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      width: 170px;
+      height: 50px;
+      font-size: 18px; }
+      .become .left button span {
+        margin-right: 10px; }
+      .become .left button img {
+        transform: scale(1.3); }
+  .become .right {
+    width: 30%; }
+    .become .right .error {
+      margin-top: 10px; }
+      .become .right .error p {
+        border: 1px solid red;
+        margin: 5px 0px; }
+    .become .right p:first-child {
+      font-size: 24px;
+      margin-top: 15px;
+      padding-top: 10px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e7e7e7; }
+    .become .right > * {
+      padding-left: 20px; }
+    .become .right .icons {
+      margin-top: 50px; }
+      .become .right .icons .social {
+        display: flex; }
+        .become .right .icons .social a {
+          width: 20px;
+          height: 20px;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: black;
+          margin: 0px 5px;
+          transition: all 0.3s linear; }
+          .become .right .icons .social a:hover {
+            background-color: white; }
+            .become .right .icons .social a:hover img {
+              filter: invert(0%); }
+          .become .right .icons .social a img {
+            filter: invert(100%);
+            transform: scale(0.4);
+            transition: all 0.3s linear; }
+          .become .right .icons .social a .facebook {
+            transform: scale(0.4) translateY(20%); }
+          .become .right .icons .social a .google {
+            margin-left: -3px;
+            margin-bottom: -3px; }
+
+@media (max-width: 640px) {
+  .become {
+    font-size: 12px; }
+    .become .left p:first-child {
+      font-size: 14px; }
+    .become .left .name {
+      flex-direction: column; }
+      .become .left .name > * {
+        width: 100%; }
+    .become .right p:first-child {
+      font-size: 14px;
+      margin-top: 4px; } }
+
+@media (max-width: 450px) {
+  .become .left {
+    width: 100%; }
+  .become .right {
+    display: none; } }
+
+/*# sourceMappingURL=login.css.map */

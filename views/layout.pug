@@ -1,0 +1,150 @@
+doctype html
+html
+	head
+		title= title
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		link(rel='stylesheet', href='/stylesheets/layout.css')
+		block styles
+	body
+		div.layout-header
+			div.black-menu
+				div.dropMenu(v-if="screenWidth <= 500")
+					img.forImg(src="../images/menu.svg", alt="", @click="isOpen = !isOpen")
+					transition(name="slide")
+						nav.mobMenu(v-show="isOpen")
+							div.likeUl
+								a(href="/") home
+								a(href="#") collections
+								a(href="#") pages
+								a(href="#") portfolio
+								a(href="#") blog
+								a(href="#") contact
+							div.search
+								div.searchImg
+				div.left-side
+					ul
+						li
+							a(href="#") Call us: (012) 345-6789
+						if isLogin
+							li
+								a(href="/user/logout") Logout
+						else
+							li
+								a(href="/user/signin") Login
+							li
+								a(href="/user/signup") Create an account
+				div.right-side
+					ul
+						li
+							img(src="../images/korzina.png", alt="")
+							a(href="/checkout") Cart: 
+								span= cartQty 
+								|  item(s) - $0.00
+						li
+							a(href="#") EN
+						li
+							a(href="#") $
+			div.menu
+				ul
+					li My Account
+					li Wishlist
+					li Checkout
+			div.logo
+				p.main DIANA
+				p.product Jewelry
+			nav(v-if="screenWidth > 500")
+				ul
+					li
+						a(href="/")
+							span home
+					li
+						a(href="#")
+							span collections
+					li
+						a(href="#")
+							span pages
+					li
+						a(href="#")
+							span portfolio
+					li
+						a(href="#")
+							span blog
+					li
+						a(href="#")
+							span contact
+				div.search
+					div.searchImg
+		div.block-content#mainApp
+			div.main
+				block content
+				div.whereForm
+					div.leftSide
+						p.signupText sign up for our newsletter
+						form(action="/")
+							input(type="text", placeholder="Your Email Address")
+							button.arrowToRight(type="submit")
+								img(src="../images/rightArrow.png", alt="asdf")
+					div.centerSide
+					div.rightSide
+						img(src="../images/diamond.png", alt="Empty")
+						p.haveA Have a jewelry inquiry?
+						p.ifHaveQues 
+							| If you have any  questions regarding our jewelries please 
+							span contact us directly 
+							| or use our contact form to get in touch
+		footer
+			div.features
+				img(src="../images/features/14.png", alt="")
+				img(src="../images/features/safeMoney.png", alt="")
+				img(src="../images/features/shop.png", alt="")
+				img(src="../images/features/sertificat.png", alt="")
+				img(src="../images/features/call.png", alt="")
+				img(src="../images/features/24.png", alt="")
+				img(src="../images/features/car.png", alt="")
+				img(src="../images/features/folder.png", alt="")
+				img(src="../images/features/measure.png", alt="")
+			div.content-footer
+				div.part
+					div.whereul
+						p.main-text categories
+						ul
+							li Earrings
+							li Good luck gifts
+							li Handmade jewelry
+							li Men's Bracelets
+							li Necklaces
+							li Rings
+				div.part
+					div.whereul
+						p.main-text account information
+						ul
+							li My Orders
+							li My Addresses
+							li My Account
+							li My Whishlist
+							li Login
+							li Register
+				div.part.icons
+					div.whereul
+						p.main-text connect with us
+						div.icon
+							img(src="../images/social/facebook.png", alt="123")
+						div.icon
+							img(src="../images/social/twitter.png", alt="123")
+						div.icon
+							img(src="../images/social/google.png", alt="")
+			div.copyright
+				div.left
+					p &lt;logo&gt; Copyright 2014. All Rights Reserved.
+				div.right
+					div.logo
+							img(src="../images/payment/visa.png", alt="123")
+					div.logo
+							img(src="../images/payment/mastercard.png", alt="123")
+					div.logo
+							img(src="../images/payment/discover.png", alt="123")
+					div.logo
+							img(src="../images/payment/ae.png", alt="123")
+		script(src="https://cdn.jsdelivr.net/npm/vue")
+		script(src="../javascripts/menu.js")
+		block scripts

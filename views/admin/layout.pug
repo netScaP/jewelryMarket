@@ -1,0 +1,17 @@
+doctype html
+html
+	head
+		title= title
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		link(rel='stylesheet', href='/stylesheets/layout.css')
+		block styles
+	body
+		div.main-block
+			p Hi, admin
+			if hasErrors
+				each e in messages
+					p= messages
+			block content
+		script(src="https://cdn.jsdelivr.net/npm/vue")
+		script(src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js")
+		block scripts

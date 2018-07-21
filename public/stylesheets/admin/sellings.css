@@ -1,0 +1,30 @@
+.main-block {
+  padding-left: 15%;
+  padding-right: 15%; }
+  .main-block .fields {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding-left: 50%;
+    padding-right: 10px;
+    border-radius: 5px; }
+  .main-block .sellings {
+    display: flex;
+    flex-direction: column;
+    padding-right: 30px; }
+    .main-block .sellings .singleSelling {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e7e7e7; }
+      .main-block .sellings .singleSelling .image {
+        width: 80px;
+        height: 80px;
+        display: block; }
+        .main-block .sellings .singleSelling .image img {
+          width: 100%;
+          height: 100%; }
+
+/*# sourceMappingURL=sellings.css.map */

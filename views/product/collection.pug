@@ -1,0 +1,182 @@
+extends ../layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/product/collection.css')
+
+block content
+	template(id="pagination-template")
+		div.pagination
+			div.leftInfo 
+				p(v-if="hasNext()") Items {{ (current - 1) * perPage + 1 }} to {{ current * perPage}} of {{ total }} total
+				p(v-if="!hasNext()") Items {{ (current - 1) * perPage + 1 }} to {{ total }} of total
+			div.rightInfo
+				p Page: 
+				div.pageCount
+					ul
+						li(v-if='hasFirst()')
+							a(href='#', @click.prevent='changePage(1)') 1
+						li(v-if='hasFirst()') ...
+						li(v-for='page in pages')
+							a(href='#', @click.prevent='changePage(page)', :class='{ current: current == page }')
+								| {{ page }}
+						li(v-if='hasLast()') ...
+						li(v-if='hasLast()')
+							a(href='#', @click.prevent='changePage(totalPages)') {{ totalPages }}
+				div.rightArrow
+					a(href="#", v-if="hasNext()", @click.prevent="changePage(nextPage)")
+						img(src="../images/rightArrowBlack.png", alt="asdf")
+	div.main-block
+		div.left
+			div.brands
+				p Brands
+				ul
+					li 
+						a(href="#") DaVonna - 
+							span (7)
+					li 
+						a(href="#") Disney - 
+							span (5)
+					li 
+						a(href="#") Glitzy Rocks - 
+							span (1)
+					li 
+						a(href="#") Junior Jewelrs - 
+							span (1)
+					li 
+						a(href="#") Little Diva Diamonds - 
+							span (1)
+					li 
+						a(href="#") Miadora - 
+							span (1)
+					li 
+						a(href="#") Molly and Emma - 
+							span (11)
+					li 
+						a(href="#") Molly Glitz - 
+							span (9)
+					li 
+						a(href="#") Mondevio - 
+							span (45)
+					li 
+						a(href="#") Nickolodeon - 
+							span (7)
+					li 
+						a(href="#") Pearlyta - 
+							span (12)
+					li 
+						a(href="#") Sterling Essentials - 
+							span (10)
+					li 
+						a(href="#") Tressa - 
+							span (5)
+			div.specials
+				p Specials
+				a.one-of(href='#')
+					img(src="", alt="Empty")
+					div.whereText
+						p.name 14k White Gold Rings, 0.33 Carat Diamond Stud
+						p.price $150.00
+			div.manufacturers
+				p Manufacturers
+				ul
+					li 
+						a(href="#") A jaffe
+					li 
+						a(href="#") A link
+					li 
+						a(href="#") Aaron Basha
+					li 
+						a(href="#") Add-a-pearl
+					li 
+						a(href="#") Alan Friedman
+					li 
+						a(href="#") A jaffe
+					li 
+						a(href="#") A link
+					li 
+						a(href="#") Aaron Basha
+					li 
+						a(href="#") Add-a-pearl
+					li 
+						a(href="#") Alan Friedman
+					li 
+						a(href="#") A jaffe
+					li 
+						a(href="#") A link
+					li 
+						a(href="#") Aaron Basha
+			div.alert
+				p.sale 40% of 
+					br
+					span Mega Sale
+		div.right
+			div.menu
+				div.toLeft
+					div.likeCollections.lc(v-on:click="isCol = true", v-if="screenWidth > 1000 || screenWidth < 640")
+						img(src="../images/sort/grid.png", alt="")
+					div.likeListCollections.lc(v-on:click="isCol = false", v-if="screenWidth > 640")
+						img(src="../images/sort/list.png", alt="")
+					div.sortBy
+						p.sortText Sort By: 
+						select
+							option Price
+							option Smth else
+						span.arrow
+							img(src="../images/arrowTop.png", alt="")
+				div.toRight
+					div.show
+						p Show:
+						select(v-model="selected")
+							option(selected="selected", v-for='(perPage, ind) in arrPerPage', v-if="ind == selected", :value="ind") {{ perPage }}
+							option(v-else, :value="ind") {{ perPage }}
+						p per page
+			div.collections(v-show='isCol')
+				a.product(:href='product.unique', v-for='(product, index) in products')
+					div.top
+						p.new(v-if="product.addInfo") {{ product.addInfo }}
+						p.type {{ product.type }}
+					img(:src="product.imagePath[0]")
+					p.name {{ product.title }}
+					p.price(v-if="product.sale == 0") ${{ product.price }}
+					div.onSale(v-else)
+						p.oldPrice ${{ product.price }}
+						p.price ${{ Math.ceil(product.price / 100 * (100 - product.sale)) }}
+			div.collections(v-show='!isCol')
+				div.productList(v-for='(product, index) in products')
+					div.left
+						p.type {{ product.type }}
+						img(:src='product.imagePath[0]')
+					div.right
+						p.new(v-show='product.addInfo') {{ product.addInfo }}
+						p.name {{ product.title }}
+						p.price(v-if="product.sale == 0") ${{ product.price }}
+						div.onSale(v-else)
+							p.price ${{ Math.ceil(product.price / 100 * (100 - product.sale)) }}
+							p.oldPrice ${{ product.price }}
+						a.detail(:href='product.unique')
+							img(src="../images/rightArrowBlack.png", alt="")
+							span details
+						div.forBuy
+							div.inCart(@click="handlerInCart")
+								button
+							p.or OR
+							a.speedBuy(href="#")
+								p SPEED BUY
+								img(src="../images/rightArrow.png", alt="")
+							form.helpDiv(method="POST", :action='addToCart(index)', :id="index", @click="handlerWhereSize", @submit="handlerSubmit")
+								input(type="hidden", name='fromCol', value='true')
+								p Check size
+								div.list
+									label(v-for='oneSize in product.size')
+										input(type="radio", 
+											  name="size", 
+											  :id='oneSize',
+											  :value='oneSize',
+											  required)
+										span {{ oneSize }}
+								button(type="submit") В корзину
+			pagination(:current='currentPage', :total='totalProducts', :per-page='perPage', @page-changed='fetchPhotos')
+block scripts
+	script(src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js")
+	script(src="../javascripts/pagination.js")
+	script(src="../javascripts/app.js")

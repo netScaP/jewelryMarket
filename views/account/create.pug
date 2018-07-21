@@ -1,0 +1,58 @@
+extends ../layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/account/create.css')
+
+block content
+	div.become
+		form.left(method="POST")
+			p Become a Member
+			p.easy It's Easy...
+			div.name
+				div.first
+					label(for="first") First Name:
+					input(type="text", name="first", id="first", required)
+				div.second
+					label(for="second") Second Name:
+					input(type="text", name="second", id="second", required)
+			div.email
+				label(for="email") Email:
+				input(type="text", name="email", id="email", required)
+			div.password
+				label(for="password") Password:
+				input(type="text", name="password", id="password", required)
+			div.phone
+				label(for="phone") Phone:
+				input(type="number", name="phone", id="phone", required)
+			div.city
+				label(for="city") City:
+				input(type="text", name="city", id="city", required)
+			div.userType
+				label
+					span Я покупатель
+					input(type="radio", name="usertype", id="user", value="user", checked)
+				label
+					span У меня есть товар, который я хочу продать
+					input(type="radio", name="usertype", id="seller", value="seller")
+				label
+					span Я хочу модерировать товар
+					input(type="radio", name="usertype", id="admin", value="admin")
+			input(type="hidden", name="_csrf", value= csrfToken)
+			button(type="submit")
+				span REGISTER
+				img(src="../images/rightArrow.png", alt="")
+		.right
+			p Follow Us
+			div.icons
+				div.social
+					a(href="#")
+						img.facebook(src="../images/social/facebook.png", alt="")
+					a(href="#")
+						img(src="../images/social/twitter.png", alt="")
+					a(href="#")
+						img.google(src="../images/social/google.png", alt="")
+			div.error
+				if hasErrors
+					each e in messages
+						p= messages
+block scripts

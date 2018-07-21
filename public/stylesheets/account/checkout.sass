@@ -1,0 +1,270 @@
+@import '../_fonts.sass'
+$pad: 15%
+$colBorder: #e7e7e7
+$colFont: #8e8e8e
+.myCart
+	font-family: "Droid Serif"
+	.topCart
+		display: flex
+		justify-content: space-between
+		align-items: center
+		.titleCart
+			font-size: 24px
+		.openOrders
+			font-size: 18px
+			text-decoration: underline
+			cursor: pointer
+	.oldOrders
+		display: flex
+		flex-direction: column
+		width: 100%
+		.fieldsName
+			background-color: black
+			color: white
+			display: flex
+			width: 100%
+			.empty
+				width: 13%
+			.productName
+				width: 35%
+			.size
+				width: 12%
+			.unitPrice
+				width: 13%
+			.quantity
+				width: 15%
+			.total
+				width: 7%
+		.singleOrder
+			display: flex
+			flex-direction: column
+			border-bottom: 1px solid $colBorder
+			.orderItem
+				display: flex
+				justify-content: space-between
+				align-items: center
+				width: 100%
+				.imageProduct
+					width: 10%
+					img
+						width: 100%
+						height: 100%
+				.singleName
+					width: 35%
+					a
+						text-decoration: none
+						color: black
+				.sizeProduct
+					width: 12%
+				.unitPriceProduct
+					width: 13%
+				.quantityProduct
+					width: 11%
+				.totalProduct
+					width: 11%
+			.orderTotalPrice
+				margin-top: 10px
+				margin-bottom: 5px
+				align-self: flex-end
+			.orderTotalQty
+				align-self: flex-end
+				margin-bottom: 10px
+	.cart
+		display: flex
+		flex-direction: column
+		.fieldsName
+			background-color: black
+			color: white
+			display: flex
+			width: 100%
+			.empty
+				width: 10%
+			.productName
+				width: 35%
+			.size
+				width: 12%
+			.unitPrice
+				width: 13%
+			.quantity
+				width: 15%
+			.total
+				width: 10%
+		.products
+			display: flex
+			flex-direction: column
+			.singleProduct
+				display: flex
+				align-items: center
+				border: 1px solid $colBorder
+				min-height: 160px
+				-webkit-animation: slide-down 2s linear forwards
+    			-moz-animation: slide-down 2s linear forwards
+				.imageProduct
+					width: 10%
+					img
+						width: 100%
+						height: 100%
+				.singleName
+					width: 35%
+					a
+						text-decoration: none
+						color: black
+				.sizeProduct
+					width: 12%
+				.unitPriceProduct
+					width: 13%
+				.quantityProduct
+					width: 15%
+					input
+						width: 40px
+						padding: 5px 0px
+				.totalProduct
+					width: 10%
+				.delete
+					width: 5%
+					padding: 3px
+					filter: invert(100%)
+					transition: all 0.3s linear
+					&:hover
+						filter: invert(0)
+					button
+						width: 60%
+						height: 35px
+						background-color: white
+						background-image: url('../../images/del.svg')
+						background-repeat: no-repeat
+						background-position: center
+						color: black
+						border: 1px solid black
+						font-size: 1.7em
+						cursor: pointer
+	.userData
+		margin-top: 70px
+		display: flex
+		flex-wrap: wrap
+		.fromLoginData
+			margin-right: 10%
+			margin-left: 5%
+		.orderData
+			.totalSum
+				justify-content: space-between
+				width: 95%
+		.fromLoginData,
+		.orderData
+			width: 40%
+			display: flex
+			flex-direction: column
+			& > *
+				width: 100%
+				display: flex
+				height: 40px
+				align-items: center
+				margin-bottom: 15px
+				label
+					width: 15%
+				input
+					-moz-appearance: textfield
+					border: 1px solid $colBorder
+					height: 85%
+					width: 80% !important
+					color: $colFont
+					padding-left: 10px
+					width: auto
+				&:last-child
+					align-self: flex-start
+			.name
+				display: flex
+				height: 40px
+				& > *
+					height: 100%
+					width: 50%
+					display: flex
+					label
+						align-self: center
+						width: 30% !important
+					input
+						height: 85%
+						width: 60% !important
+		.payMethod
+			margin-top: 20px
+			label
+				display: block
+				margin-bottom: 30px
+				border-bottom: 1px solid $colBorder
+				p
+					margin-top: 5px
+					margin-bottom: 10px
+		button
+			cursor: pointer
+			margin-top: 10px
+			background-color: black
+			color: white
+			border: 0px
+			border-radius: 3px
+			display: flex
+			justify-content: center
+			width: 200px
+			height: 50px
+			font-size: 16px
+			span
+				margin-right: 10px
+			img
+				transform: scaleX(1.5) scale(0.8)
+@-webkit-keyframes slide-down
+    from
+      	opacity: 0
+    to
+    	opacity: 1
+@-moz-keyframes slide-down
+    from
+      	opacity: 0
+    to
+    	opacity: 1
+.fade-enter-active, .fade-leave-active
+	transition: transform 1s, opacity 1s
+.fade-enter, .fade-leave-to
+	transform: scaleY(0)
+	opacity: 0.2
+@media (max-width: 1000px)
+	.myCart
+		.userData
+			p
+				font-size: 12px
+			.fromLoginData
+				margin-right: 0
+				margin-left: 0
+			.fromLoginData,
+			.orderData
+				width: 100%
+				& > *
+					label
+						width: 30%
+						font-size: 12px
+					input
+						width: 65% !important
+						color: $colFont
+						font-size: 12px
+					&:last-child
+						align-self: flex-start
+				.name
+					flex-wrap: wrap
+					min-height: 90px
+					& > *
+						width: 100%
+						height: 50%
+@media (max-width: 850px)
+	.myCart
+		.cart
+			font-size: 11px
+			.products
+				.singleProduct
+					.delete
+						button
+							width: 60%
+							height: 20px
+							font-size: 1.3em
+							background-size: 90%
+					.quantityProduct
+						input
+							width: 30px
+							font-size: 10px

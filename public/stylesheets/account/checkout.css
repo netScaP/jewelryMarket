@@ -1,0 +1,286 @@
+@font-face {
+  font-family: 'RaconteurNF';
+  src: url("./fonts/raconteur-nf/RaconteurNF.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Droid Serif';
+  src: url("./fonts/droid-serif/DroidSerif.ttf") format("truetype"); }
+
+.myCart {
+  font-family: "Droid Serif"; }
+  .myCart .topCart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .myCart .topCart .titleCart {
+      font-size: 24px; }
+    .myCart .topCart .openOrders {
+      font-size: 18px;
+      text-decoration: underline;
+      cursor: pointer; }
+  .myCart .oldOrders {
+    display: flex;
+    flex-direction: column;
+    width: 100%; }
+    .myCart .oldOrders .fieldsName {
+      background-color: black;
+      color: white;
+      display: flex;
+      width: 100%; }
+      .myCart .oldOrders .fieldsName .empty {
+        width: 13%; }
+      .myCart .oldOrders .fieldsName .productName {
+        width: 35%; }
+      .myCart .oldOrders .fieldsName .size {
+        width: 12%; }
+      .myCart .oldOrders .fieldsName .unitPrice {
+        width: 13%; }
+      .myCart .oldOrders .fieldsName .quantity {
+        width: 15%; }
+      .myCart .oldOrders .fieldsName .total {
+        width: 7%; }
+    .myCart .oldOrders .singleOrder {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #e7e7e7; }
+      .myCart .oldOrders .singleOrder .orderItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%; }
+        .myCart .oldOrders .singleOrder .orderItem .imageProduct {
+          width: 10%; }
+          .myCart .oldOrders .singleOrder .orderItem .imageProduct img {
+            width: 100%;
+            height: 100%; }
+        .myCart .oldOrders .singleOrder .orderItem .singleName {
+          width: 35%; }
+          .myCart .oldOrders .singleOrder .orderItem .singleName a {
+            text-decoration: none;
+            color: black; }
+        .myCart .oldOrders .singleOrder .orderItem .sizeProduct {
+          width: 12%; }
+        .myCart .oldOrders .singleOrder .orderItem .unitPriceProduct {
+          width: 13%; }
+        .myCart .oldOrders .singleOrder .orderItem .quantityProduct {
+          width: 11%; }
+        .myCart .oldOrders .singleOrder .orderItem .totalProduct {
+          width: 11%; }
+      .myCart .oldOrders .singleOrder .orderTotalPrice {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        align-self: flex-end; }
+      .myCart .oldOrders .singleOrder .orderTotalQty {
+        align-self: flex-end;
+        margin-bottom: 10px; }
+  .myCart .cart {
+    display: flex;
+    flex-direction: column; }
+    .myCart .cart .fieldsName {
+      background-color: black;
+      color: white;
+      display: flex;
+      width: 100%; }
+      .myCart .cart .fieldsName .empty {
+        width: 10%; }
+      .myCart .cart .fieldsName .productName {
+        width: 35%; }
+      .myCart .cart .fieldsName .size {
+        width: 12%; }
+      .myCart .cart .fieldsName .unitPrice {
+        width: 13%; }
+      .myCart .cart .fieldsName .quantity {
+        width: 15%; }
+      .myCart .cart .fieldsName .total {
+        width: 10%; }
+    .myCart .cart .products {
+      display: flex;
+      flex-direction: column; }
+      .myCart .cart .products .singleProduct {
+        display: flex;
+        align-items: center;
+        border: 1px solid #e7e7e7;
+        min-height: 160px;
+        -webkit-animation: slide-down 2s linear forwards;
+          -webkit-animation--moz-animation: slide-down 2s linear forwards; }
+        .myCart .cart .products .singleProduct .imageProduct {
+          width: 10%; }
+          .myCart .cart .products .singleProduct .imageProduct img {
+            width: 100%;
+            height: 100%; }
+        .myCart .cart .products .singleProduct .singleName {
+          width: 35%; }
+          .myCart .cart .products .singleProduct .singleName a {
+            text-decoration: none;
+            color: black; }
+        .myCart .cart .products .singleProduct .sizeProduct {
+          width: 12%; }
+        .myCart .cart .products .singleProduct .unitPriceProduct {
+          width: 13%; }
+        .myCart .cart .products .singleProduct .quantityProduct {
+          width: 15%; }
+          .myCart .cart .products .singleProduct .quantityProduct input {
+            width: 40px;
+            padding: 5px 0px; }
+        .myCart .cart .products .singleProduct .totalProduct {
+          width: 10%; }
+        .myCart .cart .products .singleProduct .delete {
+          width: 5%;
+          padding: 3px;
+          filter: invert(100%);
+          transition: all 0.3s linear; }
+          .myCart .cart .products .singleProduct .delete:hover {
+            filter: invert(0); }
+          .myCart .cart .products .singleProduct .delete button {
+            width: 60%;
+            height: 35px;
+            background-color: white;
+            background-image: url("../../images/del.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            color: black;
+            border: 1px solid black;
+            font-size: 1.7em;
+            cursor: pointer; }
+  .myCart .userData {
+    margin-top: 70px;
+    display: flex;
+    flex-wrap: wrap; }
+    .myCart .userData .fromLoginData {
+      margin-right: 10%;
+      margin-left: 5%; }
+    .myCart .userData .orderData .totalSum {
+      justify-content: space-between;
+      width: 95%; }
+    .myCart .userData .fromLoginData,
+    .myCart .userData .orderData {
+      width: 40%;
+      display: flex;
+      flex-direction: column; }
+      .myCart .userData .fromLoginData > *,
+      .myCart .userData .orderData > * {
+        width: 100%;
+        display: flex;
+        height: 40px;
+        align-items: center;
+        margin-bottom: 15px; }
+        .myCart .userData .fromLoginData > * label,
+        .myCart .userData .orderData > * label {
+          width: 15%; }
+        .myCart .userData .fromLoginData > * input,
+        .myCart .userData .orderData > * input {
+          -moz-appearance: textfield;
+          border: 1px solid #e7e7e7;
+          height: 85%;
+          width: 80% !important;
+          color: #8e8e8e;
+          padding-left: 10px;
+          width: auto; }
+        .myCart .userData .fromLoginData > *:last-child,
+        .myCart .userData .orderData > *:last-child {
+          align-self: flex-start; }
+      .myCart .userData .fromLoginData .name,
+      .myCart .userData .orderData .name {
+        display: flex;
+        height: 40px; }
+        .myCart .userData .fromLoginData .name > *,
+        .myCart .userData .orderData .name > * {
+          height: 100%;
+          width: 50%;
+          display: flex; }
+          .myCart .userData .fromLoginData .name > * label,
+          .myCart .userData .orderData .name > * label {
+            align-self: center;
+            width: 30% !important; }
+          .myCart .userData .fromLoginData .name > * input,
+          .myCart .userData .orderData .name > * input {
+            height: 85%;
+            width: 60% !important; }
+    .myCart .userData .payMethod {
+      margin-top: 20px; }
+      .myCart .userData .payMethod label {
+        display: block;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #e7e7e7; }
+        .myCart .userData .payMethod label p {
+          margin-top: 5px;
+          margin-bottom: 10px; }
+    .myCart .userData button {
+      cursor: pointer;
+      margin-top: 10px;
+      background-color: black;
+      color: white;
+      border: 0px;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      width: 200px;
+      height: 50px;
+      font-size: 16px; }
+      .myCart .userData button span {
+        margin-right: 10px; }
+      .myCart .userData button img {
+        transform: scaleX(1.5) scale(0.8); }
+
+@-webkit-keyframes slide-down {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-moz-keyframes slide-down {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.fade-enter-active, .fade-leave-active {
+  transition: transform 1s, opacity 1s; }
+
+.fade-enter, .fade-leave-to {
+  transform: scaleY(0);
+  opacity: 0.2; }
+
+@media (max-width: 1000px) {
+  .myCart .userData p {
+    font-size: 12px; }
+  .myCart .userData .fromLoginData {
+    margin-right: 0;
+    margin-left: 0; }
+  .myCart .userData .fromLoginData,
+  .myCart .userData .orderData {
+    width: 100%; }
+    .myCart .userData .fromLoginData > * label,
+    .myCart .userData .orderData > * label {
+      width: 30%;
+      font-size: 12px; }
+    .myCart .userData .fromLoginData > * input,
+    .myCart .userData .orderData > * input {
+      width: 65% !important;
+      color: #8e8e8e;
+      font-size: 12px; }
+    .myCart .userData .fromLoginData > *:last-child,
+    .myCart .userData .orderData > *:last-child {
+      align-self: flex-start; }
+    .myCart .userData .fromLoginData .name,
+    .myCart .userData .orderData .name {
+      flex-wrap: wrap;
+      min-height: 90px; }
+      .myCart .userData .fromLoginData .name > *,
+      .myCart .userData .orderData .name > * {
+        width: 100%;
+        height: 50%; } }
+
+@media (max-width: 850px) {
+  .myCart .cart {
+    font-size: 11px; }
+    .myCart .cart .products .singleProduct .delete button {
+      width: 60%;
+      height: 20px;
+      font-size: 1.3em;
+      background-size: 90%; }
+    .myCart .cart .products .singleProduct .quantityProduct input {
+      width: 30px;
+      font-size: 10px; } }
+
+/*# sourceMappingURL=checkout.css.map */

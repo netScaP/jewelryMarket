@@ -1,0 +1,90 @@
+extends ../layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/product/single.css')
+
+block content
+	div.main-block
+		div.singleProduct
+			div.left
+				div.mainImage
+					img(src= product.imagePath[0], alt="Empty")
+					div.estimate
+						div.like
+							img(src="../images/like.png", alt="")
+						div.review
+							img(src="../images/review.png", alt="")
+				div.thumbnails
+					each image in product.imagePath
+						img(src= image, alt="")
+				div.share
+					div.social
+						span Share this product: 
+						a(href="#")
+							img.facebook(src="../images/social/facebook.png", alt="")
+						a(href="#")
+							img(src="../images/social/twitter.png", alt="")
+						a(href="#")
+							img.google(src="../images/social/google.png", alt="")
+					p
+						a(href="#")
+							img(src="../images/email.png", alt="")
+						| Email this to a friend
+			div.right
+				div.prodDesc
+					p.title= product.title
+					p.type= product.type
+					if product.sale == ''
+						p.price= '$'+product.price
+					else
+						-var newPrice = Math.ceil(product.price / 100 * (100 - product.sale))
+						div.newPrice
+							span.price= '$'+newPrice
+							span.oldPrice= '$'+product.price
+					form.addToCart(action='add-to-cart/' + product.unique, method='POST')
+						div.forPin
+							div 
+								p Have a Pin?
+							input(type="text", placeholder="enter your pincode")
+						div.selectSize
+							p Select Size:
+							div.helpDiv
+								each oneSize in product.size
+									label
+										input(type="radio", 
+											  name="size", 
+											  id= oneSize,
+											  value= oneSize,
+											  required)
+										span= oneSize
+						div.selectQuantity
+							p Select Quantity:
+							div.select
+								div.minus(v-on:click='quantity -= 1')
+								input(type="text", 
+									  id="quant", 
+									  name="quantity",
+									  v-model="quantity")
+								div.plus(v-on:click='quantity += 1')
+						div.forBuy
+							button.inCart(type="submit")
+								img(src="../images/korzina.png", alt="")
+							p.or OR
+							button.speedBuy(type="submit")
+								p SPEED BUY
+								img(src="../images/rightArrow.png", alt="")
+				div.description
+					p= product.description
+	div.partDesc
+		p Product Specifications:
+		div.specific
+			each val, index in product.partDesc
+				div.onePart
+					div.ind
+						span= index
+					div.value
+						span= val
+block scripts
+	script(src="../javascripts/app.js")
+	script(src="../javascripts/main.js")
+	script(src="../javascripts/submit.js")

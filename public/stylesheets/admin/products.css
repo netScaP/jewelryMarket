@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'RaconteurNF';
+  src: url("./fonts/raconteur-nf/RaconteurNF.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Droid Serif';
+  src: url("./fonts/droid-serif/DroidSerif.ttf") format("truetype"); }
+
+.main-block {
+  padding-left: 15%;
+  padding-right: 15%; }
+  .main-block .addProduct {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+    width: 100%; }
+  .main-block .products {
+    width: auto; }
+    .main-block .products .singleProduct {
+      display: flex;
+      width: 100%;
+      height: 50px;
+      text-decoration: none;
+      color: black; }
+      .main-block .products .singleProduct .left {
+        width: 5%;
+        height: 100%; }
+        .main-block .products .singleProduct .left img {
+          width: 100%;
+          height: 100%; }
+      .main-block .products .singleProduct .right {
+        display: flex;
+        width: 85%;
+        margin-left: 5%;
+        justify-content: space-between; }
+
+/*# sourceMappingURL=products.css.map */

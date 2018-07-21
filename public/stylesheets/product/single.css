@@ -1,0 +1,314 @@
+@font-face {
+  font-family: 'RaconteurNF';
+  src: url("./fonts/raconteur-nf/RaconteurNF.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Droid Serif';
+  src: url("./fonts/droid-serif/DroidSerif.ttf") format("truetype"); }
+
+.main-block {
+  font-family: 'Droid Serif'; }
+  .main-block .singleProduct {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; }
+    .main-block .singleProduct .left {
+      display: flex;
+      flex-direction: column;
+      width: 40%; }
+      .main-block .singleProduct .left .mainImage {
+        width: 100%;
+        height: 550px;
+        border: 1px solid #e7e7e7; }
+        .main-block .singleProduct .left .mainImage img {
+          width: 100%;
+          height: 100%; }
+        .main-block .singleProduct .left .mainImage .estimate {
+          display: flex; }
+          .main-block .singleProduct .left .mainImage .estimate div {
+            z-index: 100;
+            transform: translateY(-130%);
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s linear; }
+            .main-block .singleProduct .left .mainImage .estimate div:hover {
+              background-color: white; }
+              .main-block .singleProduct .left .mainImage .estimate div:hover img {
+                filter: invert(100%); }
+            .main-block .singleProduct .left .mainImage .estimate div img {
+              width: 100%;
+              height: 100%;
+              transform: scale(0.4);
+              transition: all 0.3s linear; }
+          .main-block .singleProduct .left .mainImage .estimate .like {
+            margin-left: 15px;
+            margin-right: 5px; }
+      .main-block .singleProduct .left .thumbnails {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        width: 100%;
+        height: 120px;
+        justify-content: space-between; }
+        .main-block .singleProduct .left .thumbnails img {
+          width: 23%;
+          height: 100%;
+          border: 1px solid #e7e7e7;
+          cursor: pointer; }
+      .main-block .singleProduct .left .share {
+        margin-top: 10px; }
+        .main-block .singleProduct .left .share .social {
+          display: flex; }
+          .main-block .singleProduct .left .share .social a {
+            width: 20px;
+            height: 20px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            margin: 0px 5px;
+            transition: all 0.3s linear; }
+            .main-block .singleProduct .left .share .social a:hover {
+              background-color: white; }
+              .main-block .singleProduct .left .share .social a:hover img {
+                filter: invert(0%); }
+            .main-block .singleProduct .left .share .social a img {
+              filter: invert(100%);
+              transform: scale(0.4);
+              transition: all 0.3s linear; }
+            .main-block .singleProduct .left .share .social a .facebook {
+              transform: scale(0.4) translateY(20%); }
+            .main-block .singleProduct .left .share .social a .google {
+              margin-left: -3px;
+              margin-bottom: -3px; }
+        .main-block .singleProduct .left .share p a {
+          margin-right: 10px;
+          position: relative;
+          top: 3px; }
+    .main-block .singleProduct .right {
+      width: 60%;
+      display: flex;
+      flex-direction: column; }
+      .main-block .singleProduct .right .prodDesc {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; }
+        .main-block .singleProduct .right .prodDesc p {
+          margin-top: 0px; }
+        .main-block .singleProduct .right .prodDesc > * {
+          margin-left: 60px; }
+        .main-block .singleProduct .right .prodDesc .title {
+          font-size: 24px; }
+        .main-block .singleProduct .right .prodDesc .type {
+          color: #8e8e8e;
+          text-transform: uppercase; }
+        .main-block .singleProduct .right .prodDesc .price {
+          margin-bottom: 20px;
+          font-size: 40px; }
+        .main-block .singleProduct .right .prodDesc .newPrice {
+          display: flex;
+          align-items: center; }
+          .main-block .singleProduct .right .prodDesc .newPrice .price {
+            margin-bottom: 0px;
+            margin-right: 10px; }
+          .main-block .singleProduct .right .prodDesc .newPrice .oldPrice {
+            font-size: 25px;
+            color: red;
+            text-decoration: line-through; }
+        .main-block .singleProduct .right .prodDesc .rate {
+          margin-bottom: 25px;
+          display: flex;
+          align-items: center; }
+          .main-block .singleProduct .right .prodDesc .rate span {
+            margin-left: 10px;
+            color: #8e8e8e; }
+        .main-block .singleProduct .right .prodDesc .addToCart .forPin {
+          margin-bottom: 30px;
+          width: auto;
+          display: inline-flex; }
+          .main-block .singleProduct .right .prodDesc .addToCart .forPin div {
+            border: 1px solid #e7e7e7;
+            border-right: 0px;
+            padding-left: 10px;
+            font-size: 16px;
+            padding-right: 20px;
+            display: flex; }
+            .main-block .singleProduct .right .prodDesc .addToCart .forPin div p {
+              margin: auto; }
+          .main-block .singleProduct .right .prodDesc .addToCart .forPin input {
+            position: relative;
+            left: -5px;
+            background-color: #e7e7e7;
+            color: #8e8e8e;
+            font-style: italic;
+            border: 0px;
+            padding: 10px;
+            border-radius: 5px; }
+        .main-block .singleProduct .right .prodDesc .addToCart .selectSize {
+          margin-bottom: 30px; }
+          .main-block .singleProduct .right .prodDesc .addToCart .selectSize .helpDiv {
+            display: flex; }
+            .main-block .singleProduct .right .prodDesc .addToCart .selectSize .helpDiv input {
+              display: none; }
+            .main-block .singleProduct .right .prodDesc .addToCart .selectSize .helpDiv label {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: row;
+              width: 50px;
+              height: 30px;
+              text-align: center;
+              border: 1px solid #e7e7e7;
+              line-height: 50px;
+              cursor: pointer;
+              transition: all 0.3s linear;
+              margin-right: 10px; }
+            .main-block .singleProduct .right .prodDesc .addToCart .selectSize .helpDiv .checked {
+              border: 1px solid black; }
+        .main-block .singleProduct .right .prodDesc .addToCart .selectQuantity {
+          margin-bottom: 30px; }
+          .main-block .singleProduct .right .prodDesc .addToCart .selectQuantity p {
+            margin-bottom: 10px;
+            margin-top: 20px; }
+          .main-block .singleProduct .right .prodDesc .addToCart .selectQuantity .select {
+            display: flex;
+            align-items: center; }
+            .main-block .singleProduct .right .prodDesc .addToCart .selectQuantity .select .minus, .main-block .singleProduct .right .prodDesc .addToCart .selectQuantity .select .plus {
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+              width: 10px;
+              height: 20px; }
+            .main-block .singleProduct .right .prodDesc .addToCart .selectQuantity .select .minus {
+              background-image: url("../../images/minus.png"); }
+            .main-block .singleProduct .right .prodDesc .addToCart .selectQuantity .select .plus {
+              background-image: url("../../images/plus.png"); }
+            .main-block .singleProduct .right .prodDesc .addToCart .selectQuantity .select input {
+              margin: 0px 5px;
+              background-color: white;
+              border: 1px solid #e7e7e7;
+              border-radius: 5px;
+              padding: 5px 10px; }
+        .main-block .singleProduct .right .prodDesc .addToCart .forBuy {
+          margin-top: 20px;
+          display: flex; }
+          .main-block .singleProduct .right .prodDesc .addToCart .forBuy button {
+            border: 2px solid black;
+            display: block;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s linear; }
+            .main-block .singleProduct .right .prodDesc .addToCart .forBuy button:hover {
+              border: 2px solid white; }
+          .main-block .singleProduct .right .prodDesc .addToCart .forBuy .inCart {
+            padding: 20px; }
+          .main-block .singleProduct .right .prodDesc .addToCart .forBuy .or {
+            align-self: center;
+            color: #8e8e8e;
+            margin-bottom: 0px;
+            margin: 0px 20px; }
+          .main-block .singleProduct .right .prodDesc .addToCart .forBuy .speedBuy {
+            padding: 10px 30px;
+            font-size: 18px;
+            display: flex;
+            align-items: center; }
+            .main-block .singleProduct .right .prodDesc .addToCart .forBuy .speedBuy p {
+              margin-bottom: 0px; }
+            .main-block .singleProduct .right .prodDesc .addToCart .forBuy .speedBuy img {
+              width: 25px;
+              height: 13px;
+              margin-left: 12px; }
+      .main-block .singleProduct .right .description {
+        font-family: 'Droid Serif';
+        margin-top: 50px;
+        line-height: 25px;
+        color: #8e8e8e; }
+        .main-block .singleProduct .right .description p {
+          margin: 0px;
+          margin-left: 60px; }
+
+.partDesc {
+  font-family: 'Droid Serif'; }
+  .partDesc p {
+    width: 100%;
+    font-size: 24px; }
+  .partDesc .specific {
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; }
+    .partDesc .specific .onePart {
+      border-bottom: 1px solid #e7e7e7;
+      border-top: 1px solid #e7e7e7;
+      margin-right: 40px;
+      padding: 10px 5px;
+      display: flex;
+      min-width: 30%;
+      max-width: 50%; }
+      .partDesc .specific .onePart .ind {
+        height: 100%;
+        width: 40%;
+        padding-left: 20px;
+        border-right: 2px solid #e7e7e7;
+        display: flex;
+        align-items: center; }
+      .partDesc .specific .onePart .value {
+        height: 100%;
+        width: 60%;
+        padding-left: 20px;
+        color: #8e8e8e;
+        display: flex;
+        align-items: center; }
+
+@media (max-width: 850px) {
+  .main-block .singleProduct .right .prodDesc > * {
+    margin-bottom: 10px !important; }
+  .main-block .singleProduct .right .prodDesc .title {
+    font-size: 14px; }
+  .main-block .singleProduct .right .prodDesc .type {
+    font-size: 12px; }
+  .main-block .singleProduct .right .prodDesc .price {
+    font-size: 18px; }
+  .main-block .singleProduct .right .prodDesc .rate {
+    font-size: 12px; }
+  .main-block .singleProduct .right .prodDesc form {
+    font-size: 12px; }
+    .main-block .singleProduct .right .prodDesc form > * {
+      margin-bottom: 10px !important; }
+    .main-block .singleProduct .right .prodDesc form .forPin p {
+      font-size: 12px; }
+    .main-block .singleProduct .right .prodDesc form .forPin input {
+      width: 100px;
+      font-size: 12px; }
+    .main-block .singleProduct .right .prodDesc form .forBuy button {
+      transform: scale(0.8); }
+  .main-block .singleProduct .right .description {
+    font-size: 13px; }
+  .partDesc {
+    font-size: 0.7em; }
+    .partDesc p {
+      font-size: 1.5em; } }
+
+@media (max-width: 640px) {
+  .main-block .singleProduct .left {
+    width: 100%;
+    border-bottom: 1px solid #e7e7e7; }
+  .main-block .singleProduct .right {
+    width: 100%; }
+    .main-block .singleProduct .right .prodDesc > * {
+      margin-left: 0px !important; }
+    .main-block .singleProduct .right .description {
+      margin-top: 10px; }
+      .main-block .singleProduct .right .description > * {
+        margin-left: 0px !important; } }
+
+/*# sourceMappingURL=single.css.map */

@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'RaconteurNF';
+  src: url("./fonts/raconteur-nf/RaconteurNF.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Droid Serif';
+  src: url("./fonts/droid-serif/DroidSerif.ttf") format("truetype"); }
+
+.main-block {
+  padding-left: 15%;
+  padding-right: 15%; }
+  .main-block .users {
+    width: 100%;
+    display: flex;
+    flex-direction: column; }
+    .main-block .users .singleUser {
+      display: flex;
+      justify-content: space-between; }
+
+/*# sourceMappingURL=userList.css.map */

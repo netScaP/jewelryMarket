@@ -1,0 +1,132 @@
+extends ../layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/account/checkout.css')
+
+block content
+	div.myCart
+		div.topCart
+			p.titleCart My Cart
+			p.openOrders(@click="isOrdersOpen = !isOrdersOpen", v-if="!isOrdersOpen") Open your all orders
+			p.openOrders(@click="isOrdersOpen = !isOrdersOpen", v-else) Close old orders
+		transition(name="fade", mode="out-in")
+			div.oldOrders(v-show="isOrdersOpen")
+				div.fieldsName
+					div.empty
+					div.productName
+						p Product Name
+					div.size
+						p Size
+					div.unitPrice
+						p Unit Price
+					div.quantity
+						p Quantity
+					div.total
+						p Total
+				div.singleOrder(v-for="order in orders")
+					template(v-for="items in order['cart']['items']")
+						div(v-for="item, size in items").orderItem
+							div.imageProduct
+								img(:src="item['item'].imagePath[0]")
+							div.singleName
+								a(:href="item['item'].unique") {{ item['item'].title }}
+							div.sizeProduct
+								p.sizeSingleProduct {{ size }}
+							div.unitPriceProduct
+								p $
+									span {{ Math.ceil( item['item'].price / 100 * (100 - item['item'].sale ) ) }}
+							div.quantityProduct
+								p {{ item.qty }}
+							div.totalProduct
+								p {{ item.qty * Math.ceil( item['item'].price / 100 * (100 - item['item'].sale ) ) }}
+					div.orderTotalPrice 
+						span Total Price of an Order: 
+						span $
+							span {{ order['cart']['totalPrice'] }}
+					div.orderTotalQty 
+						span Total Quantity of an Order: 
+						span {{ order['cart']['totalQty'] }}
+		div(v-if="empty")
+			p Заполните корзину товарами
+		div(v-else)
+			div.cart 
+				div.fieldsName
+					div.empty
+					div.productName
+						p Product Name
+					div.size
+						p Size
+					div.unitPrice
+						p Unit Price
+					div.quantity
+						p Quantity
+					div.total
+						p Total
+				div.products
+					span(v-for="id, justId in cart.items")
+						div.singleProduct(v-for="item, size in id", ref="singleProduct")
+							div.imageProduct
+								img(:src="item['item'].imagePath[0]")
+							div.singleName
+								a(:href="item['item'].unique") {{ item['item'].title }}
+							div.sizeProduct
+								p.sizeSingleProduct {{ size }}
+							div.unitPriceProduct
+								p $
+									span {{ Math.ceil( item['item'].price / 100 * (100 - item['item'].sale ) ) }}
+							div.quantityProduct
+								input(type="number", v-model.lazy="item.qty")
+							div.totalProduct
+								p {{ item.qty * Math.ceil( item['item'].price / 100 * (100 - item['item'].sale ) ) }}
+							form.delete(:action="'delete/' + item['item'].unique")
+								button(@click.prevent="change(justId, size, item.qty)", type="submit")
+								input(type="hidden", name="size", :value="size")
+								input(type="hidden", name="quantity", :value="item.qty")
+								input(type="hidden", name="id", :value="justId", class="productId")
+			form.userData(method="POST")
+				div.fromLoginData
+					div.name
+						div.first
+							label(for="first") First Name:
+							input(type="text", name="first", id="first", placeholder="first name", required)
+						div.second
+							label(for="second") Second Name:
+							input(type="text", name="second", id="second", placeholder="second name", required)
+					div.email
+						label(for="email") Email:
+						input(type="text", name="email", id="email", placeholder="e-mail", required)
+					div.phone
+						label(for="phone") Phone:
+						input(type="number", name="phone", id="phone", placeholder="phone", required)
+					div.city
+						label(for="city") City:
+						input(type="text", name="city", id="city", placeholder="city", required)
+				div.orderData
+					div.totalSum
+						p Order Total
+						p ${{ total }}
+					div.promo
+						label(for="promo") Pin for sale
+						input(type="text", name="promo", placeholder="Pin code", id="promo")
+					div.postCode
+						label(for="postCode") Postcode / Zip
+						input(type="text", name="postCode", id="postCode", placeholder="post code", required)
+				div.payMethod
+					input(type="radio", name="payMethod", id="bank", value="bank", checked)
+					label(for="bank")
+						p Direct Bank Transfer
+						p Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order wont't be shipped until the funds have cleared in out account.
+					input(type="radio", name="payMethod", id="cheque", value="cheque")
+					label(for="cheque")
+						p Cheque Payment
+						p Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+					input(type="radio", name="payMethod", id="paypal", value="paypal")
+					label(for="paypal")
+						p Paypal
+						p Pay via PayPal: you can pay with your credit card if you don't have a PayPal account.
+				button(type="submit")
+					span PLACE ORDER
+					img(src="../images/rightArrow.png", alt="")
+block scripts
+	script(src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js")
+	script(src="../javascripts/checkout.js")
