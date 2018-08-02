@@ -18,7 +18,7 @@ router.get('/pagination', (req, res, next) => {
 });
 
 router.get('/total', (req, res, next) => {
-	Product.find((err, docs) => {
+	Product.find({ confirmed: true }, (err, docs) => {
 		res.send(docs);
 	});
 });

@@ -3,10 +3,20 @@ html
 	head
 		title= title
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		link(rel='stylesheet', href='/stylesheets/layout.css')
+		link(rel='stylesheet', href='/stylesheets/admin/layout.css')
 		block styles
 	body
 		div.main-block
+			div.menu
+				ul
+					li
+						a(href="/admin/") Home
+					li
+						a(href="/admin/products") Products
+					li
+						a(href="/admin/addProduct") Add Product
+					li
+						a(href="/admin/sellings") Selling
 			p Hi, admin
 			if hasErrors
 				each e in messages

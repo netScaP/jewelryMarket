@@ -198,10 +198,7 @@ router.post('/updateCart', (req, res, next) => {
 export default router;
 
 async function saveSellingFor(sales) {
-	console.log('inFor');
-	console.log(sales);
 	for (let key in sales) {
-		console.log(sales[key]);
 		await Selling.updateOne(
 			{ user: key },
 			{ 
@@ -215,7 +212,6 @@ async function saveSellingFor(sales) {
 		);
 
 		for (var i = sales[key].length - 1; i >= 0; i--) {
-			console.log(-sales[key][i].qty);
 			await Product.findOneAndUpdate(
 				{ uniue: sales[key][i]['item']['unique'] },
 				{ $inc: { quantity: -sales[key][i].qty } }, // doesn't work

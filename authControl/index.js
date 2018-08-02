@@ -23,6 +23,18 @@ export function checkRole(roles) {
 			return next();
 		}
 
-		return res.redirect('/');
+		return res.redirect('/admin');
 	}
+}
+
+export function isProductOwner(req, res, next) {
+    console.log(req.body);
+    console.log('middleware');
+    console.log(req.user);
+    console.log(req.user['_id'] == req.body.params.product['owner']);
+    if (req.user['_id'] == req.body.params.product['owner']) {
+        return next();
+    }
+
+    return res.redirect('/admin');
 }
