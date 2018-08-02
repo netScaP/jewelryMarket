@@ -2,7 +2,7 @@ import Product from '../models/product';
 
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://localhost:27017/shopping', { useMongoClient: true });
+mongoose.connect('mongodb://xnx:Bahmud20002004@ds111012.mlab.com:11012/jewelry', { useMongoClient: true });
 
 const products = [
 	new Product({
