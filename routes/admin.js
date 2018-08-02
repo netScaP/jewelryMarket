@@ -144,9 +144,16 @@ router.get('/rejectproduct/:id', checkRole(['admin']), (req, res, next) => {
 });
 
 router.get('/sellings', (req, res, next) => {
+	console.log(req.user['_id']);
 	Selling.findOne({ user: req.user['_id'] }, (err, sellings) => {
+		console.log(sellings);
+		if (sellings) {
+			return res.render('admin/sellings', {
+				'sellings': sellings['cart']
+			});
+		}
 		res.render('admin/sellings', {
-			'sellings': sellings['cart']
+			'sellings': []
 		});
 	});
 });

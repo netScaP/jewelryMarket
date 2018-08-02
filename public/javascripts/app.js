@@ -22,6 +22,7 @@ var app = new Vue({
           };
 
           this.$http.get('/api/pagination', options).then(function(response) {
+            console.log(response);
             this.products = response.body;
             this.currentPage = page;
           }, console.log);

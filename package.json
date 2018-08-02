@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "babel-node ./bin/www",
-    "seeder": "babel-node ./seeder/product-seeder.js"
+    "seeder": "babel-node ./seeder/product-seeder.js",
+    "createAdmin": "babel-node ./createAdmin.js"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
