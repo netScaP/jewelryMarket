@@ -196,7 +196,8 @@
               background-color: white;
               border: 1px solid #e7e7e7;
               border-radius: 5px;
-              padding: 5px 10px; }
+              padding: 5px 10px;
+              width: 10px; }
         .main-block .singleProduct .right .prodDesc .addToCart .forBuy {
           margin-top: 20px;
           display: flex; }

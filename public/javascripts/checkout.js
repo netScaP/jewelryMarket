@@ -60,21 +60,3 @@ var app = new Vue({
 app.$watch('cart', function(newVal) {
 	this.$http.post('/updateCart', newVal);
 }, { deep: true });
-/*
-function putReq() {
-	var xhr = new XMLHttpRequest();
-
-	xhr.open('PUT', '/checkout', true); // METHOD, link
-	xhr.setRequestHeader('Content-Type', 'application/json');
-
-	var jSon = {};
-	for (var i = app.products.length - 1; i >= 0; i--) {
-		if (+app.products[i].getElementsByClassName('quantPut')[0].value < 1) continue;
-		jSon[i] = {};
-		jSon[i]['id'] = app.products[i].getElementsByClassName('productId')[0].value;
-		jSon[i]['size'] = +app.products[i].getElementsByClassName('sizeSingleProduct')[0].innerHTML;
-		jSon[i]['quantPut'] = app.products[i].getElementsByClassName('quantPut')[0].value;
-	}
-
-	xhr.send(JSON.stringify(jSon));
-}*/

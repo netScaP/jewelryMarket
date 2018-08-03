@@ -157,17 +157,17 @@ block content
 							img(src="../images/rightArrowBlack.png", alt="")
 							span details
 						div.forBuy
-							div.inCart(@click="handlerInCart")
+							div.inCart(@click="product.confirmed = false")
 								button
 							p.or OR
 							a.speedBuy(href="#")
 								p SPEED BUY
 								img(src="../images/rightArrow.png", alt="")
-							form.helpDiv(method="POST", :action='addToCart(index)', :id="index", @click="handlerWhereSize", @submit="handlerSubmit")
+							form.helpDiv(method="POST", :action='addToCart(index)', :id="index", @submit="handlerSubmit(index)", :class="{ isOpen: !product.confirmed == true }")
 								input(type="hidden", name='fromCol', value='true')
 								p Check size
 								div.list
-									label(v-for='oneSize in product.size')
+									label(v-for='oneSize in product.size', :class="{ checked: oneSize == currentSize }", @click="currentSize = oneSize")
 										input(type="radio", 
 											  name="size", 
 											  :id='oneSize',

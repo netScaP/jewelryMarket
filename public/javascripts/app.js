@@ -1,4 +1,3 @@
-var inputQuant = document.getElementById('quant');
 var app = new Vue({
   el: '.main-block',
   data: {
@@ -10,7 +9,8 @@ var app = new Vue({
     perPage: 9,
     selected: 1,
     arrPerPage: [3, 9, 27],
-    currentPage: 1
+    currentPage: 1,
+    currentSize: 0
   },
   methods: {
     fetchPhotos: function(page) {
@@ -30,61 +30,8 @@ var app = new Vue({
     addToCart: function(i) {
       return 'add-to-cart/' + this.products[i].unique;
     },
-    handlerWhereSize: function(event) {
-      var target = event.target;
-      var form = target.parentNode.parentNode.parentNode;
-
-      while (target.tagName != 'LABEL') {
-        target = target.parentNode;
-      }
-
-      var allLabel = form.getElementsByTagName('label');
-
-      for (var i = 0; i < allLabel.length; i++) {
-        allLabel[i].classList.remove('checked');
-      }
-      target.classList.add('checked');
-    },
-    handlerInCart: function(event) {
-      var target = event.target;
-      target.parentNode.parentNode.lastChild.style.position = 'absolute';
-      target.parentNode.parentNode.lastChild.style.opacity = 1;
-      var btn = target.parentNode.getElementsByTagName('button')[0];
-      btn.setAttribute('form', target.parentNode.parentNode.lastChild.getAttribute('id'));
-    },
-    handlerSubmit: function(event) {
-      event.preventDefault();
-
-      var xhr = new XMLHttpRequest();
-      xhr.open(event.target.method, '/' + event.target.attributes.action.value, true); // METHOD, link
-      xhr.setRequestHeader('Content-Type', 'application/json');
-
-      var allInput = event.target.getElementsByTagName('INPUT');
-
-      var jSon = {}; // input.name: input.value
-      for (var i = 0; i < allInput.length; i++) {
-        if (allInput[i].getAttribute('type') == 'radio') {
-          if (allInput[i].checked) {
-            jSon[allInput[i].name] = allInput[i].value;
-          }
-        } else {
-          jSon[allInput[i].name] = allInput[i].value;
-        }
-      }
-      delete jSon[''];
-
-      var allSelect = event.target.getElementsByTagName('SELECT');
-
-      for (var i = allSelect.length - 1; i >= 0; i--) {
-        var allOption = allSelect[i].getElementsByTagName('OPTION');
-        for (var i = allOption.length - 1; i >= 0; i--) {
-          if (allOption[i].selected) {
-            jSon[allSelect[i].name] = allOption[i].value;
-          }
-        }
-      }
-
-      xhr.send(JSON.stringify(jSon));
+    handlerSubmit: function(i) {
+      this.$http.post('/add-to-cart/' + this.products[i].unique, this.products[i]);
     }
   },
   created: function() {
@@ -100,10 +47,10 @@ var app = new Vue({
   	quantity: function() {
   		if (this.quantity < 1 || this.quantity == '' || this.quantity == 'NaN' || !this.quantity) this.quantity = 1;
   		this.quantity = parseInt(this.quantity);
-  		if ((+inputQuant.value + 1) % 10 == 0) {
-  			inputQuant.style.width = ((inputQuant.value.length + 2) * 8) - 6 + 'px';
-  		} else if (+inputQuant.value % 10 == 1) {
-  			inputQuant.style.width = ((inputQuant.value.length + 1) * 8) - 6 + 'px';
+  		if ((+this.$refs['quant'].value + 1) % 10 == 0) {
+  			this.$refs['quant'].style.width = ((this.$refs['quant'].value.length + 2) * 8) - 6 + 'px';
+  		} else if (+this.$refs['quant'].value % 10 == 1) {
+  			this.$refs['quant'].style.width = ((this.$refs['quant'].value.length + 1) * 8) - 6 + 'px';
   		}
   	},
     selected: function(val, prevVal) {

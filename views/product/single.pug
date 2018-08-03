@@ -8,15 +8,14 @@ block content
 		div.singleProduct
 			div.left
 				div.mainImage
-					img(src= product.imagePath[0], alt="Empty")
+					img(:src="product.imagePath[currentImage]", alt="Empty")
 					div.estimate
 						div.like
 							img(src="../images/like.png", alt="")
 						div.review
 							img(src="../images/review.png", alt="")
 				div.thumbnails
-					each image in product.imagePath
-						img(src= image, alt="")
+					img(v-for="(image, index) in product.imagePath", :src="image", alt="", @click="currentImage = index")
 				div.share
 					div.social
 						span Share this product: 
@@ -32,16 +31,13 @@ block content
 						| Email this to a friend
 			div.right
 				div.prodDesc
-					p.title= product.title
-					p.type= product.type
-					if product.sale == ''
-						p.price= '$'+product.price
-					else
-						-var newPrice = Math.ceil(product.price / 100 * (100 - product.sale))
-						div.newPrice
-							span.price= '$'+newPrice
-							span.oldPrice= '$'+product.price
-					form.addToCart(action='add-to-cart/' + product.unique, method='POST')
+					p.title {{ product.title }}
+					p.type {{ product.type }}
+					p(v-if="product.sale == 0").price {{ product.price | addUSD }}
+					div.newPrice(v-else)
+						span.price {{ onSale }}
+						span.oldPrice {{ product.price | addUSD }}
+					form.addToCart(:action='product.unique | addToCart', method='POST', @submit.prevent="handlerSubmit()")
 						div.forPin
 							div 
 								p Have a Pin?
@@ -49,14 +45,13 @@ block content
 						div.selectSize
 							p Select Size:
 							div.helpDiv
-								each oneSize in product.size
-									label
-										input(type="radio", 
-											  name="size", 
-											  id= oneSize,
-											  value= oneSize,
-											  required)
-										span= oneSize
+								label(v-for="oneSize in product.size", @click="currentSize = oneSize", :class="{ checked: currentSize == oneSize }")
+									input(type="radio", 
+										  name="size", 
+										  :id="oneSize",
+										  :value="oneSize",
+										  required)
+									span {{ oneSize }}
 						div.selectQuantity
 							p Select Quantity:
 							div.select
@@ -64,6 +59,7 @@ block content
 								input(type="text", 
 									  id="quant", 
 									  name="quantity",
+									  ref="quant"
 									  v-model="quantity")
 								div.plus(v-on:click='quantity += 1')
 						div.forBuy
@@ -74,17 +70,15 @@ block content
 								p SPEED BUY
 								img(src="../images/rightArrow.png", alt="")
 				div.description
-					p= product.description
+					p {{ product.description }}
 	div.partDesc
 		p Product Specifications:
 		div.specific
-			each val, index in product.partDesc
-				div.onePart
-					div.ind
-						span= index
-					div.value
-						span= val
+			div.onePart(v-for="(val, index) in product.partDesc")
+				div.ind
+					span {{ index }}
+				div.value
+					span {{ val }}
 block scripts
-	script(src="../javascripts/app.js")
-	script(src="../javascripts/main.js")
-	script(src="../javascripts/submit.js")
+	script(src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js")
+	script(src="../javascripts/single.js")
