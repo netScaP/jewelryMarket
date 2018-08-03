@@ -12,7 +12,6 @@ var app = new Vue({
 		}
 	},
 	created: function() {
-		console.log('hi there');
 		this.$http.get('/api/userlist').then(function(response) {
 			this.users = response.body;
 			console.log(this.users);

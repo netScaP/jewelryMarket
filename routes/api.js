@@ -34,9 +34,9 @@ router.get('/cart', (req, res, next) => {
 	res.send(cart);
 });
 
-router.get('/userlist', /* isLoggedIn, checkRole['admin'], Doesn't work*/ (req, res, next) => {
+router.get('/userlist', isLoggedIn, checkRole(['admin']), (req, res, next) => {
 	console.log('hi there');
-	User.find({}, (err, users) => {
+	User.find((err, users) => {
 		if (err) {
 			req.flash('error', err.message);
 			return res.redirect('/');

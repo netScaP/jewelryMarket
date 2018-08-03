@@ -16,12 +16,10 @@ var app = new Vue({
 		},
 		submit: function(event) {
 			var options = {
-				params: {
-					product: this.product
-				}
+				product: this.product
 			};
-			console.log(this.products);
-			this.$http.post('/admin/products/' + this.product['unique'], options);
+			console.log(this.product);
+			this.$http.post('/admin/addProduct', options);
 		},
 		submitClick: function() {
 			// открыть блок на пол экрана

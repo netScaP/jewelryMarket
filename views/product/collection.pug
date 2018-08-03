@@ -163,7 +163,7 @@ block content
 							a.speedBuy(href="#")
 								p SPEED BUY
 								img(src="../images/rightArrow.png", alt="")
-							form.helpDiv(method="POST", :action='addToCart(index)', :id="index", @submit="handlerSubmit(index)", :class="{ isOpen: !product.confirmed == true }")
+							form.helpDiv(method="POST", :action='addToCart(index)', :id="index", @submit.prevent="handlerSubmit(index)", :class="{ isOpen: !product.confirmed == true }")
 								input(type="hidden", name='fromCol', value='true')
 								p Check size
 								div.list

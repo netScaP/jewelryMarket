@@ -79,11 +79,13 @@ router.get('/addProduct', (req, res, next) => {
 });
 
 router.post('/addProduct', (req, res, next) => {
-	const product = req.body;
-	product.confirmed = req.user.confirmed;
-	product.owner = req.user || product.owner;
+	const product = req.body.product;
+	product.confirmed = false;
+	product.owner = req.user;
 	
 	Product.create(product, (err, result) => {
+		console.log(result);
+		console.log(err);
 		if (err) {
 			req.flash('error', err.message);
 			return res.redirect('/admin/addProduct');
@@ -145,15 +147,14 @@ router.get('/rejectproduct/:id', checkRole(['admin']), (req, res, next) => {
 
 router.get('/sellings', (req, res, next) => {
 	console.log(req.user['_id']);
-	Selling.findOne({ user: req.user['_id'] }, (err, sellings) => {
+	Selling.findOne({ user: req.user['_id'] })
+	.select('cart')
+	.populate({ path: 'cart.item'})
+	.exec((err, sellings) => {
+		let data = sellings ? sellings['cart'] : [];
 		console.log(sellings);
-		if (sellings) {
-			return res.render('admin/sellings', {
-				'sellings': sellings['cart']
-			});
-		}
 		res.render('admin/sellings', {
-			'sellings': []
+			'sellings': data
 		});
 	});
 });

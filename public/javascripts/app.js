@@ -31,7 +31,11 @@ var app = new Vue({
       return 'add-to-cart/' + this.products[i].unique;
     },
     handlerSubmit: function(i) {
-      this.$http.post('/add-to-cart/' + this.products[i].unique, this.products[i]);
+      var options = {
+        quantity: 1,
+        size: this.currentSize
+      };
+      this.$http.post('/add-to-cart/' + this.products[i].unique, options);
     }
   },
   created: function() {

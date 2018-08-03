@@ -28,10 +28,6 @@ export function checkRole(roles) {
 }
 
 export function isProductOwner(req, res, next) {
-    console.log(req.body);
-    console.log('middleware');
-    console.log(req.user);
-    console.log(req.user['_id'] == req.body.params.product['owner']);
     if (req.user['_id'] == req.body.params.product['owner']) {
         return next();
     }
