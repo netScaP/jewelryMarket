@@ -12,7 +12,8 @@ router.use(isLoggedIn);
 router.use(checkRole(['seller', 'admin']));
 
 router.get('/', (req, res, next) => {
-	res.redirect('/admin/products');
+	// res.redirect('/admin/products');
+	res.render('admin/admin-home');
 });
 
 router.get('/products', (req, res, next) => {
@@ -41,9 +42,7 @@ router.get('/products/:id', (req, res, next) => {
 });
 
 router.post('/products/:id', isProductOwner, (req, res, next) => {
-	console.log('post');
-	console.log(req.body);
-	let updatedData = req.body.params.product;
+	let updatedData = req.body.product;
 	for (var i = updatedData.size.length - 1; i >= 0; i--) {
 		if (!Number.isInteger(+updatedData.size[i]) || updatedData.size[i] == '') {
 			updatedData.size.splice(i, 1);
@@ -58,14 +57,19 @@ router.post('/products/:id', isProductOwner, (req, res, next) => {
 
 	updatedData.confirmed = false;
 
-	console.log(updatedData);
-
 	Product.updateOne(
 		{ unique: updatedData.unique },
 		updatedData
 	)
 	.then(result => {
-		console.log(result);
+		res.status(200).json({
+			message: 'Товар обновлен, ждите проверки'
+		});
+	})
+	.catch(err => {
+		res.status(500).json({
+			message: err.message
+		})
 	});
 
 });
@@ -84,13 +88,14 @@ router.post('/addProduct', (req, res, next) => {
 	product.owner = req.user;
 	
 	Product.create(product, (err, result) => {
-		console.log(result);
-		console.log(err);
 		if (err) {
-			req.flash('error', err.message);
-			return res.redirect('/admin/addProduct');
+			return res.status(500).json({
+				message: err.message
+			})
 		}
-		res.redirect('/admin/products');
+		res.status(200).json({
+			message: 'Товар успешно добавлен'
+		});
 	});
 });
 

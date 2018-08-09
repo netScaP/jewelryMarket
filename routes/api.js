@@ -4,6 +4,7 @@ import Cart from '../models/cart';
 import Product from '../models/product';
 import User from '../models/user';
 import Order from '../models/order';
+import Selling from '../models/selling';
 
 import { checkRole, isLoggedIn } from '../authControl';
 
@@ -55,6 +56,58 @@ router.get('/orders', (req, res, next) => {
 		}
 		console.log(orders);
 		res.send(orders);
+	});
+});
+
+router.get('/sellings', (req, res, next) => {
+	Selling.aggregate([
+		{
+			'$match': {
+				'user': req.user['_id']
+			}
+		},
+		{
+			'$unwind': '$cart'
+		},
+		{
+			'$project': {
+				"y": {
+					"$year": "$cart.time"
+				},
+				"m": {
+					"$month": "$cart.time"
+				},
+				"d": {
+					"$dayOfMonth": "$cart.time"
+				},
+				"qty": "$cart.qty",
+				"price": "$cart.price",
+				"unique": "$cart.unique"
+			}
+		},
+		{
+			'$group': {
+				'_id': {
+					'y': '$y',
+					'm': '$m',
+					'd': '$d'
+				},
+				'sum': { "$sum": "$qty" }
+			}
+		},
+		{
+			$sort: {
+				"_id.y": 1,
+				"_id.m": 1,
+				"_id.d": 1
+			}
+		}
+	]).then(result => {
+		res.send(result);
+	}).catch(err => {
+		res.json({
+			message: err.message
+		})
 	});
 });
 

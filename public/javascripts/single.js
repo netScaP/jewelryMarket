@@ -4,7 +4,8 @@ var app = new Vue({
 		product: {},
 		quantity: 1,
 		currentSize: 0,
-		currentImage: 0
+		currentImage: 0,
+		messages: []
 	},
 	methods: {
 		handlerSubmit: function() {
@@ -13,6 +14,8 @@ var app = new Vue({
 				size: this.currentSize
 			}
 			this.$http.post('/add-to-cart/' + this.product.unique, option);
+			this.messages.push(this.quantity + ' товара было добавлено');
+			Vue.set(app, 'quantity', 1);
 		}
 	},
 	filters: {

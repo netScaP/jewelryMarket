@@ -112,11 +112,12 @@ router.post('/checkout', isLoggedIn, (req, res, next) => {
 				sales[cart['items'][id][item]['item']['owner']] = sales[cart['items'][id][item]['item']['owner']] || [];
 				sales[cart['items'][id][item]['item']['owner']].push({
 					'customer': req.user['_id'],
-					'item': cart['items'][id][item]['item'],
+					'price': cart['items'][id][item]['item']['price'],
 					'size': item,
 					'qty': cart['items'][id][item]['qty'],
 					'image': cart['items'][id][item]['item'].imagePath[0],
-					'unique': +cart['items'][id][item]['item'].unique
+					'unique': +cart['items'][id][item]['item'].unique,
+					'time': new Date()
 				});
 			}
 		}
@@ -183,7 +184,7 @@ router.post('/updateCart', (req, res, next) => {
 	for (var id in newCart['items']) {
 		for (var item in newCart['items'][id]) {
 			totalQty += +newCart['items'][id][item].qty;
-			totalPrice += (+newCart['items'][id][item]['item'].price / 100 * (100 - newCart['items'][id][item]['item'].sale)) * newCart['items'][id][item].qty;
+			totalPrice += Math.ceil( (+newCart['items'][id][item]['item'].price / 100 * (100 - newCart['items'][id][item]['item'].sale)) * newCart['items'][id][item].qty );
 		}
 	}
 	newCart.totalQty = totalQty;
@@ -213,7 +214,7 @@ async function saveSellingFor(sales) {
 
 		for (var i = sales[key].length - 1; i >= 0; i--) {
 			await Product.findOneAndUpdate(
-				{ uniue: sales[key][i]['item']['unique'] },
+				{ uniue: sales[key][i]['unique'] },
 				{ $inc: { quantity: -sales[key][i].qty } }, // doesn't work
 				(err, result) => {
 					console.log(err);

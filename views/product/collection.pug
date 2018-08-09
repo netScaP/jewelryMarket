@@ -176,6 +176,10 @@ block content
 										span {{ oneSize }}
 								button(type="submit") В корзину
 			pagination(:current='currentPage', :total='totalProducts', :per-page='perPage', @page-changed='fetchPhotos')
+			div#pop-ups
+				div.message(v-for="(message, index) in messages")
+					img(src="../images/close.svg", @click="messages.splice(index, 1)")
+					p {{ message }}
 block scripts
 	script(src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js")
 	script(src="../javascripts/pagination.js")

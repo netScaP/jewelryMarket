@@ -1,14 +1,15 @@
 var app = new Vue({
 	el: '.main-block',
 	data: {
-		product: {}
+		product: {},
+		messages: []
 	},
 	methods: {
 		addElement: function(ref) {
 			console.log(ref);
 			console.log(this.product);
 			if (ref == 'onePart') {
-				this.product['partDesc'].push({ '': '' });
+				this.product['partDesc'][''] = '';
 				return true;
 			}
 
@@ -18,11 +19,23 @@ var app = new Vue({
 			var options = {
 				product: this.product
 			};
+			var link = window.location.pathname.split('/').pop() === 'addProduct' ? '/admin/addProduct' : '/admin/products/' + window.location.pathname.split('/').pop();
 			console.log(this.product);
-			this.$http.post('/admin/addProduct', options);
-		},
-		submitClick: function() {
-			// открыть блок на пол экрана
+			this.$http.post(link, options).then(function(response) {
+				console.log(response);
+				console.log(response.body.message);
+				this.messages.push({
+					'success': true,
+					'message': response.body.message
+				});
+				console.log(this.messages);
+			})
+			.catch(function(err) {
+				this.messages.push({
+					'success': false,
+					'message': err.body.message
+				});
+			});
 		}
 	},
 	created: function() {

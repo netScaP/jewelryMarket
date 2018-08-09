@@ -1,0 +1,14 @@
+extends ./layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/admin/admin-home.css')
+
+block content
+	div#main-app
+		select(v-model='viewBy')
+			option(v-for="option in options", :value="option.value") {{ option.text }}
+		line-chart(:chart-labels="generateLabels", :chart-data="generateData", v-if="generateLabels.length > 1")
+		div(v-else) Недостаточно данных для заполнения графика
+block scripts
+	script(src="https://unpkg.com/vue-chartjs@2.5.3/dist/vue-chartjs.min.js")
+	script(src="../../javascripts/admin-home.js")

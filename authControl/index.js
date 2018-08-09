@@ -28,9 +28,11 @@ export function checkRole(roles) {
 }
 
 export function isProductOwner(req, res, next) {
-    if (req.user['_id'] == req.body.params.product['owner']) {
+    if (req.user['_id'] == req.body.product['owner']) {
         return next();
     }
 
-    return res.redirect('/admin');
+    return res.status(404).json({
+        message: 'Вы не владелец товара'
+    })
 }

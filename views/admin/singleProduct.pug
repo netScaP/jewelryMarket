@@ -12,42 +12,46 @@ block content
 					img(:src="product.imagePath[0]", alt="Empty")
 				div.thumbnails
 					img(v-for="image in product.imagePath", :src="image", alt="")
-				input(v-for="(image, index) in product.imagePath", type="url", v-model="product.imagePath[index]", placeholder="Ссылка на изображение").imagePath
+				input(v-for="(image, index) in product.imagePath", type="url", v-model.trim="product.imagePath[index]", placeholder="Ссылка на изображение").imagePath
 				div.imagePathAdd(@click='addElement("imagePath")') +
 			div.right
 				div.prodDesc
-					input(type="text", v-model="product.title", placeholder="Название товара").title
-					input(type="text", v-model="product.type", placeholder="Тип товара").type
+					input(type="text", v-model.trim="product.title", placeholder="Название товара").title
+					input(type="text", v-model.trim="product.type", placeholder="Тип товара").type
 					div.priceDiv
-						input(type="number", v-model="product.price", placeholder="Цена").price
+						input(type="number", v-model.trim="product.price", placeholder="Цена").price
 						span $
 					div.size
 						span Size(s): 
-						input(v-for="(oneSize, index) in product.size", type="text", v-model="product.size[index]", class="sizeArr")
+						input(v-for="(oneSize, index) in product.size", type="text", v-model.trim="product.size[index]", class="sizeArr")
 						div.sizeArrAdd(@click='addElement("size")') +
 					div.selectQuantity
 						p New Quantity:
-						input(type="number", v-model="product.quantity")
+						input(type="number", v-model.trim="product.quantity")
 					div.description
-						input(type="text", v-model="product.description", placeholder="Описание товара")
+						input(type="text", v-model.trim="product.description", placeholder="Описание товара")
 		div.partDesc
 			p Product Specifications:
 			div.specific
 				div.onePart(v-for="(val, index) in product.partDesc")
 					div.ind
-						input(type="text", v-model="index", placeholder="Тип")
+						input(type="text", v-model.trim="index", placeholder="Тип")
 					div.value
-						input(type="text", v-model="product.partDesc[index]", placeholder="Кольцо")
+						input(type="text", v-model.trim="product.partDesc[index]", placeholder="Кольцо")
 				div.onePartAdd(@click='addElement("onePart")') +
 		span Sale: 
 		input(type="number", v-model="product.sale", placeholder="Скидка")
 		br
 		span AddInfo: 
-		input(v-if="product.addInfo", type="text", v-model="product.addInfo", placeholder="Дополнительная информация")
-		input(v-else, type="text", placeholder="Дополнительная информация", v-model="product.addInfo")
+		input(v-if="product.addInfo", type="text", v-model.trim="product.addInfo", placeholder="Дополнительная информация")
+		input(v-else, type="text", placeholder="Дополнительная информация", v-model.trim="product.addInfo")
 		br
 		input(type="hidden", :value="product.unique", ref="unique")
 		br
-		button(type="submit", @click="submitClick()") UPDATE Product
+		button(type="submit") UPDATE Product
+		div#pop-ups
+			div.message(v-for="(one, index) in messages", :class="{ error: !one.success }")
+				img(src="../../images/close.svg", @click="messages.splice(index, 1)")
+				p {{ one.message }}
 block scripts
 	script(src="../../javascripts/admin.js")

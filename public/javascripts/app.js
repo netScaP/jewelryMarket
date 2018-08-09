@@ -10,7 +10,8 @@ var app = new Vue({
     selected: 1,
     arrPerPage: [3, 9, 27],
     currentPage: 1,
-    currentSize: 0
+    currentSize: 0,
+    messages: []
   },
   methods: {
     fetchPhotos: function(page) {
@@ -36,6 +37,7 @@ var app = new Vue({
         size: this.currentSize
       };
       this.$http.post('/add-to-cart/' + this.products[i].unique, options);
+      this.messages.push('Товар добавлен');
     }
   },
   created: function() {
