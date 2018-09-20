@@ -33,11 +33,12 @@ block content
 		div.partDesc
 			p Product Specifications:
 			div.specific
+				p {{ product.partDesc }}
 				div.onePart(v-for="(val, index) in product.partDesc")
 					div.ind
-						input(type="text", v-model.trim="index", placeholder="Тип")
+						input(type="text", v-model="index")
 					div.value
-						input(type="text", v-model.trim="product.partDesc[index]", placeholder="Кольцо")
+						input(type="text", v-model="product.partDesc[index]")
 				div.onePartAdd(@click='addElement("onePart")') +
 		span Sale: 
 		input(type="number", v-model="product.sale", placeholder="Скидка")

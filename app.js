@@ -1,20 +1,20 @@
-import express from 'express';
-import path from 'path';
-import favicon from 'serve-favicon';
-import logger from 'morgan';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import sassMiddleware from 'node-sass-middleware';
-import mongoose from 'mongoose';
-import session from 'express-session';
-import passport from 'passport';
-import flash from 'connect-flash';
-import validator from 'express-validator';
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const sassMiddleware = require('node-sass-middleware');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const passport = require('passport');
+const flash = require('connect-flash');
+const validator = require('express-validator');
 
-import routes from './routes/index';
-import userRoutes from './routes/user';
-import apiRoutes from './routes/api';
-import adminRoutes from './routes/admin';
+const routes = require('./routes/index');
+const userRoutes = require('./routes/user');
+const apiRoutes = require('./routes/api');
+const adminRoutes = require('./routes/admin');
 
 mongoose.Promise = Promise;
 
@@ -98,4 +98,4 @@ app.use((err, req, res, next) => {
 });
 
 
-export default app;
+module.exports = app;

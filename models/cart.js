@@ -1,4 +1,4 @@
-export default class Cart {
+module.exports = class Cart {
     constructor(oldCart) {
         this.items = oldCart.items || {};
         this.totalQty = oldCart.totalQty || 0;

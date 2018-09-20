@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-auto-increment');
 
@@ -26,4 +26,4 @@ schema.plugin(autoIncrement.plugin, {
 	incrementBy: 1
 });
 
-export default mongoose.model('Product', schema);
+module.exports = mongoose.model('Product', schema);

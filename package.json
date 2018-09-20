@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node ./bin/www",
-    "seeder": "babel-node ./seeder/product-seeder.js",
-    "createAdmin": "babel-node ./createAdmin.js"
+    "start": "node ./bin/www",
+    "seeder": "node ./seeder/product-seeder.js",
+    "createAdmin": "node ./createAdmin.js"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

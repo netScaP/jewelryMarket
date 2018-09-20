@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -9,4 +9,4 @@ const schema = new Schema({
     phone:     {type: String, required: true}
 });
 
-export default mongoose.model('Order', schema);
+module.exports = mongoose.model('Order', schema);

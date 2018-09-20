@@ -1,11 +1,11 @@
-import express from 'express';
-import csrf from 'csurf';
-import passport from 'passport';
+const express = require('express');
+const csrf = require('csurf');
+const passport = require('passport');
 
-import Order from '../models/order';
-import Cart from '../models/cart';
+const Order = require('../models/order');
+const Cart = require('../models/cart');
 
-import { isLoggedIn, notLoggedIn, reqOld } from '../authControl';
+const { isLoggedIn, notLoggedIn, reqOld } = require('../authControl');
 
 const router = express.Router();
 
@@ -84,4 +84,4 @@ router.post('/signin', passport.authenticate('local.signin', {
     }
 });
 
-export default router;
+module.exports = router;

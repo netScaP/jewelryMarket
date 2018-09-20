@@ -1,12 +1,12 @@
-import express from 'express';
+const express = require('express');
 
-import Cart from '../models/cart';
-import Product from '../models/product';
-import User from '../models/user';
-import Order from '../models/order';
-import Selling from '../models/selling';
+const Cart = require('../models/cart');
+const Product = require('../models/product');
+const User = require('../models/user');
+const Order = require('../models/order');
+const Selling = require('../models/selling');
 
-import { checkRole, isLoggedIn } from '../authControl';
+const { checkRole, isLoggedIn } = require('../authControl');
 
 const router = express.Router();
 
@@ -111,4 +111,4 @@ router.get('/sellings', (req, res, next) => {
 	});
 });
 
-export default router;
+module.exports = router;

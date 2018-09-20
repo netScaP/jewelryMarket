@@ -6,13 +6,15 @@ var app = new Vue({
 	},
 	methods: {
 		addElement: function(ref) {
-			console.log(ref);
-			console.log(this.product);
 			if (ref == 'onePart') {
-				this.product['partDesc'][''] = '';
+				// this.product['partDesc'][''] = '';
+				console.log('onePart');
+				Vue.set(this.product['partDesc'], '', '');
+				console.log(this.product['partDesc']);
 				return true;
 			}
 
+			console.log('phf');
 			this.product[ref].push('');
 		},
 		submit: function(event) {
@@ -22,13 +24,10 @@ var app = new Vue({
 			var link = window.location.pathname.split('/').pop() === 'addProduct' ? '/admin/addProduct' : '/admin/products/' + window.location.pathname.split('/').pop();
 			console.log(this.product);
 			this.$http.post(link, options).then(function(response) {
-				console.log(response);
-				console.log(response.body.message);
 				this.messages.push({
 					'success': true,
 					'message': response.body.message
 				});
-				console.log(this.messages);
 			})
 			.catch(function(err) {
 				this.messages.push({
@@ -49,7 +48,7 @@ var app = new Vue({
 				price: 0,
 				sale: 0,
 				type: '',
-				size: [0],
+				size: [],
 				quantity: 1,
 				addInfo: '',
 				confirmed: false

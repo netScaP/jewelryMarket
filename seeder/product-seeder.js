@@ -1,6 +1,6 @@
-import Product from '../models/product';
+const Product = require('../models/product');
 
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://xnx:Bahmud20002004@ds111012.mlab.com:11012/jewelry', { useMongoClient: true });
 

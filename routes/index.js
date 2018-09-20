@@ -1,11 +1,11 @@
-import express from 'express';
+const express = require('express');
 
-import Cart from '../models/cart';
-import Product from '../models/product';
-import Order from '../models/order';
-import Selling from '../models/selling';
+const Cart = require('../models/cart');
+const Product = require('../models/product');
+const Order = require('../models/order');
+const Selling = require('../models/selling');
 
-import { isLoggedIn, notLoggedIn, reqOld } from '../authControl';
+const { isLoggedIn, notLoggedIn, reqOld } = require('../authControl');
 
 const router = express.Router();
 
@@ -196,7 +196,7 @@ router.post('/updateCart', (req, res, next) => {
 });
 
 
-export default router;
+module.exports = router;
 
 async function saveSellingFor(sales) {
 	for (let key in sales) {

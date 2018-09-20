@@ -1,6 +1,6 @@
-import Product from '../models/product';
+const Product = require('../models/product');
 
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 mongoose.connect('localhost:27017/shopping');
 
