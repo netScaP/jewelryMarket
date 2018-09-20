@@ -242,45 +242,53 @@
   opacity: 0.2; }
 
 @media (max-width: 1000px) {
-  .myCart .userData p {
-    font-size: 12px; }
-  .myCart .userData .fromLoginData {
-    margin-right: 0;
-    margin-left: 0; }
-  .myCart .userData .fromLoginData,
-  .myCart .userData .orderData {
-    width: 100%; }
-    .myCart .userData .fromLoginData > * label,
-    .myCart .userData .orderData > * label {
-      width: 30%;
+  .myCart {
+    font-size: 10px; }
+    .myCart .productName {
+      display: none; }
+    .myCart .singleName {
+      display: none; }
+    .myCart .fieldsName {
+      justify-content: space-around; }
+    .myCart .oldOrders {
+      font-size: 10px; }
+    .myCart .userData p {
       font-size: 12px; }
-    .myCart .userData .fromLoginData > * input,
-    .myCart .userData .orderData > * input {
-      width: 65% !important;
-      color: #8e8e8e;
-      font-size: 12px; }
-    .myCart .userData .fromLoginData > *:last-child,
-    .myCart .userData .orderData > *:last-child {
-      align-self: flex-start; }
-    .myCart .userData .fromLoginData .name,
-    .myCart .userData .orderData .name {
-      flex-wrap: wrap;
-      min-height: 90px; }
-      .myCart .userData .fromLoginData .name > *,
-      .myCart .userData .orderData .name > * {
-        width: 100%;
-        height: 50%; } }
+    .myCart .userData .fromLoginData {
+      margin-right: 0;
+      margin-left: 0; }
+    .myCart .userData .fromLoginData,
+    .myCart .userData .orderData {
+      width: 100%; }
+      .myCart .userData .fromLoginData > * label,
+      .myCart .userData .orderData > * label {
+        width: 30%;
+        font-size: 12px; }
+      .myCart .userData .fromLoginData > * input,
+      .myCart .userData .orderData > * input {
+        width: 65% !important;
+        color: #8e8e8e;
+        font-size: 12px; }
+      .myCart .userData .fromLoginData > *:last-child,
+      .myCart .userData .orderData > *:last-child {
+        align-self: flex-start; }
+      .myCart .userData .fromLoginData .name,
+      .myCart .userData .orderData .name {
+        flex-wrap: wrap;
+        min-height: 90px; }
+        .myCart .userData .fromLoginData .name > *,
+        .myCart .userData .orderData .name > * {
+          width: 100%;
+          height: 50%; } }
 
 @media (max-width: 850px) {
-  .myCart .cart {
-    font-size: 11px; }
-    .myCart .cart .products .singleProduct .delete button {
-      width: 60%;
-      height: 20px;
-      font-size: 1.3em;
-      background-size: 90%; }
-    .myCart .cart .products .singleProduct .quantityProduct input {
-      width: 30px;
-      font-size: 10px; } }
+  .myCart .cart .products .singleProduct .delete button {
+    width: 60%;
+    height: 20px;
+    font-size: 1.3em;
+    background-size: 90%; }
+  .myCart .cart .products .singleProduct .quantityProduct input {
+    width: 30px;
+    font-size: 10px; } }
 
 /*# sourceMappingURL=checkout.css.map */
